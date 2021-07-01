@@ -1,0 +1,8 @@
+#login {
+  background-image: url("bg0.jpg");
+  height: 100vh;
+  padding-top: 7%;
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+}
