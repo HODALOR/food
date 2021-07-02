@@ -6,3 +6,20 @@
   justify-content: center;
   align-items: baseline;
 }
+.loginbtn{
+  background-color: orange;
+  font-weight: bold;
+  font-size: 1rem;
+}
+.loginbtn:hover{
+ background-color:orangered;
+ color: honeydew;
+ cursor: pointer;
+
+}
+
+.account__icon:hover{
+  color:orangered;
+ cursor: pointer;
+
+}

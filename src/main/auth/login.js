@@ -1,48 +1,117 @@
-import React from "react";
+import React, { useState } from "react";
 import "./login.css";
 
 function Login(props) {
-  const Loged = () => {
-    props.history.push("/main");
+  const [userName, setUserName] = useState("");
+  const [password, setPassword] = useState("");
+
+  const _handleLogin = () => {
+    const data = {
+      userName,
+      password,
+    };
+    props.onLogin(data);
+    setUserName("");
+    setPassword("");
+  };
+  const Accounts = () => {
+    props.history.push("/Accounts");
   };
 
   return (
     // <div>
-    <div  id="login"  >
+    <div id="login">
       <div
-        className="w3-container w3-card w3-round-medium w3-white "
-        style={{width:"32%" }}
+        className="w3-container "
+        style={{
+          width: "32%",
+          backgroundColor: "white",
+          borderRadius: "1rem",
+          boxShadow: "0px 10px 50px",
+        }}
       >
-        <div classname="w3-card w3-yellow " style={{ backgroudColor: "red", }}>
-          <div 
-            className="w3-container w3-orange  "
-            //   style={{ marginLeft: "31%", marginRight: "31%", marginTop: "10%" }}
+        <div>
+          <div
+            className="container  "
+            style={{
+              backgroudColor: "orange",
+              borderBottom: "2px solid orange",
+            }}
           >
-            <h2>FoodApp</h2>
+            <i
+              className="fa fa-unlock-alt  account__icon"
+              style={{
+                float: "right",
+                paddingRight: "2rem",
+                fontSize: "1.5rem",
+              }}
+              type="button"
+              role="button"
+              onClick={Accounts}
+            ></i>
+
+            <h2 style={{ backgroudColor: "orange" }}>FoodApp</h2>
           </div>
+
           <div>
             <img
               src="/assets/logo1.png"
-              style={{ width: "8rem", height: "8rem" }}
+              style={{ width: "8rem", height: "6rem" }}
             />
           </div>
           <form
-            className="w3-container " style={{ marginTop: "10%"}}
+            className="w3-container "
+            style={{ marginTop: "10%" }}
             //   style={{ marginLeft: "30%", marginRight: "30%" }}
           >
             <p>
-              <label style={{ float: "left" }}>User Name</label>
-              <input className="w3-input" type="text" />
+              <label style={{ float: "left", paddingLeft: "1rem" }}>
+                User Name
+              </label>
+              <input
+                className="w3-input"
+                type="text"
+                value={userName}
+                style={{
+                  width: "90%",
+                  height: "3rem",
+                  border: "none",
+                  borderBottom: "1px solid orange",
+                }}
+                onChange={(e) => setUserName(e.target.value)}
+              />
             </p>
             <p>
-              <label style={{ float: "left" }}>Password</label>
-              <input className="w3-input" type="text" />
+              <label style={{ float: "left", paddingLeft: "1rem" }}>
+                Password
+              </label>
+              <input
+                className="w3-input"
+                type="password"
+                value={password}
+                style={{
+                  width: "90%",
+                  height: "3rem",
+                  border: "none",
+                  borderBottom: "1px solid orange",
+                }}
+                onChange={(e) => setPassword(e.target.value)}
+              />
             </p>
             <p>
               <button
-                onClick={Loged}
                 type="button"
-                style={{ width: "100%", height: "3rem", marginTop: "2rem" }}
+                role="button"
+                className="loginbtn"
+                onClick={() => _handleLogin()}
+                type="button"
+                style={{
+                  width: "90%",
+                  height: "3rem",
+                  marginTop: "2rem",
+                  border: "none",
+                  borderRadius: ".5rem",
+                }}
               >
                 Login
               </button>
