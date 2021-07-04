@@ -1,16 +1,17 @@
+import { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
 import Main from "./main/app/main";
 import Login from "./main/auth/login";
 import Users from "./main/app/users";
-import { useEffect, useState } from "react";
+import Sales from "./main/app/sales"
+import Dishes from "./main/app/dishes";
 
 // importing db files
 const { remote } = require("electron");
 const dishesInstance = remote.getGlobal("disheStore");
-const usersInstance = remote.getGlobal("usersStore");
 
-function App(props) {
+function App() {
   const [allDishes, setDishes] = useState([]);
   const [currentUser, setCurrentUser] = useState({});
 
@@ -27,23 +28,7 @@ function App(props) {
   };
 
   const _handleLogin = (data) => {
-    if (data.userName === "" || data.password === "") {
-      alert("Please both fileds are required!");
-      return false;
-    } else if (data.password.length < 6) {
-      alert("Please password is too short!");
-      return false;
-    } else {
-      usersInstance.read(data.userName).then((user) => {
-        if (user === null) {
-          alert("User does not exist, please check user name or password");
-          return false;
-        } else {
-          setCurrentUser(user);
-          props.history.push("/main");
-        }
-      });
-    }
+    setCurrentUser(data)
   };
 
   return (
@@ -53,7 +38,7 @@ function App(props) {
           <Route
             exact
             path="/"
-            render={(props) => <Login {...props} onLogin={_handleLogin} />}
+            render={(props) => <Login {...props} data={_handleLogin} />}
           />
           <Route
             path="/main"
@@ -62,6 +47,10 @@ function App(props) {
             )}
           />
           <Route path="/Accounts" component={Users} />
+          <Route path="/Sales" component={Sales} />
+          <Route path="/Dishes" component={Dishes} />
+
+
         </Switch>
       </Router>
     </div>

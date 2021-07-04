@@ -1,19 +1,20 @@
-import React from 'react'
+import React from "react";
+import "../main.css";
 
 function Header() {
-    
-    return(
-        <div>
-          <div   style={{display:"flex", alignItems:"center", backgroundColor:"orange", height: "4rem"}}> 
-            <img src="/assets/logo1.png" style={{width:"8rem", height:"8rem"}}/>
-            <h2>FoodApp</h2>
-            <i class="fa fa-cart-plus" style={{marginLeft:"79%", }}></i>
-            </div>
-        
-
+  return (
+    <div>
+      <div className="header-style">
+        <img
+          src="/assets/logo1.png"
+          style={{ width: "60px", height: "60px" }}
+        />
+        <div className="right">
+          <i class="fa fa-cart-plus" style={{ float: "flex-end" }}></i>
         </div>
-    )
+      </div>
+    </div>
+  );
 }
-
 
 export default Header;
