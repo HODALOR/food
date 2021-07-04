@@ -10,9 +10,8 @@ function Main(props) {
   return (
     <div>
       <Header />
-      <div style={{}} className="main__card">
+      <div className="main__card">
         <div
-          className="w3-container w3-card w3-round-medium  main__card2"
           style={{
             width: "95%",
             margin: "1%",
@@ -22,9 +21,10 @@ function Main(props) {
             backgroundRepeat: "no-repeat",
             backgroundPosition: "center",
             backgroundSize: "cover",
+            borderRadius: "10px"
           }}
         >
-          <h1>THE FOOD APP</h1>
+          <h1>RESTAURANT NAME</h1>
           <div className="select">
             <select>
               <option>Select dish...</option>
@@ -34,8 +34,7 @@ function Main(props) {
             </select>
             <div className="prices">GHC</div>
             <button type="button" role="button" className="add">
-              <i class="fa fa-cart-plus"></i>
-              Add to Cart
+              <i className="fa fa-cart-plus"></i> Add to Cart
             </button>
           </div>
         </div>

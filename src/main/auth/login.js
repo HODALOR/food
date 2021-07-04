@@ -1,18 +1,35 @@
 import React, { useState } from "react";
 import "./login.css";
 
+// importing db files
+const { remote } = require("electron");
+const usersInstance = remote.getGlobal("usersStore");
+
 function Login(props) {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
 
   const _handleLogin = () => {
-    const data = {
-      userName,
-      password,
-    };
-    props.onLogin(data);
-    setUserName("");
-    setPassword("");
+    if (userName === "" || password === "") {
+      alert("Please both fileds are required!");
+      return false;
+    } else if (password.length < 6) {
+      alert("Please password is too short!");
+      return false;
+    } else {
+      // usersInstance.read(userName).then((user) => {
+      //   if (user === null) {
+      //     alert("User does not exist, please check user name or password");
+      //     return false;
+      //   } else {
+      //     props.data(user);
+      //     props.history.push("/main");
+      //     setPassword("");
+      //     setUserName("");
+      //   }
+      // });
+      props.history.push("/main");
+    }
   };
   const Accounts = () => {
     props.history.push("/Accounts");
