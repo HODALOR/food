@@ -39,6 +39,7 @@ function Login(props) {
             }}
           >
             <i
+            
               className="fa fa-unlock-alt  account__icon"
               style={{
                 float: "right",
@@ -47,8 +48,10 @@ function Login(props) {
               }}
               type="button"
               role="button"
+              
               onClick={Accounts}
             ></i>
+            <h5 onClick={Accounts} className="account__icon">Lock</h5>
 
             <h2 style={{ backgroudColor: "orange" }}>FoodApp</h2>
           </div>
