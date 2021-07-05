@@ -62,7 +62,7 @@ function Users(props) {
         phone,
       };
       props.addUser(storeData);
-      toggleAddUser();
+      toggleAddUser("add-user");
     }
   };
   const _handleRowClick = (data) => {
