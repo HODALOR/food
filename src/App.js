@@ -47,6 +47,19 @@ function App() {
     getUsers();
   };
 
+  const _deleteUser = (id) => {
+    usersDbInstance.removeUser(id);
+    getUsers();
+  };
+
+  const _editUser = (data) => {
+    usersDbInstance.updateUser(data).then((res) => {
+      if (res === 1) {
+        getUsers();
+      }
+    });
+  };
+
   return (
     <div className="App">
       <Router>
@@ -65,7 +78,13 @@ function App() {
           <Route
             path="/Accounts"
             render={(props) => (
-              <Users {...props} addUser={_handleAddUser} users={users} />
+              <Users
+                {...props}
+                addUser={_handleAddUser}
+                users={users}
+                onDelete={_deleteUser}
+                onEdit={_editUser}
+              />
             )}
           />
           <Route path="/Sales" component={Sales} />
