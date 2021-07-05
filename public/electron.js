@@ -3,11 +3,11 @@ const { app, BrowserWindow } = require('electron')
 const isDev = require("electron-is-dev")
 const path = require("path")
 
-const usersStore = require("./db/stores/usersStore");
+const userStore = require("./db/stores/userStore");
 const salesStore = require("./db/stores/salesStore");
 const disheStore = require("./db/stores/dishesStore");
 
-global.usersStore = usersStore;
+global.userStore = userStore;
 global.salesStore = salesStore;
 global.disheStore = disheStore;
 

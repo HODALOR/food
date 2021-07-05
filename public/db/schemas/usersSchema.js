@@ -13,7 +13,7 @@ const userSchema = {
     userName: {
       type: "string",
     },
-    userID: {
+    role: {
       type: "string",
     },
     password: {

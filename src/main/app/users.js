@@ -1,120 +1,84 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState } from "react";
 import "./main.css";
-import Modals from "./modals";
+import Header from "./component/header";
+import Tables from "./component/tables";
+import Modals from "./component/modals";
 
 function Users(props) {
-  const salePoint = () => {
-    props.history.push("/");
+  const [isOpen, setIsOpen] = useState(false);
+  const [errMessage, setErrMessage] = useState("");
+  const toggleAddUser = () => {
+    setIsOpen(!isOpen);
   };
-
-  const [modal, setModal] = useState();
+  const _handleAdd = (data) => {
+    let { firstName, lastName, userName, password, repeatPass, role, phone } =
+      data;
+    if (
+      firstName === "" ||
+      lastName === "" ||
+      userName === "" ||
+      password === "" ||
+      repeatPass === "" ||
+      role === "" ||
+      phone === ""
+    ) {
+      setErrMessage("All Fields are required!");
+      setTimeout(() => {
+        setErrMessage("");
+      }, 3000);
+      return false;
+    } else if (password !== repeatPass) {
+      setErrMessage("Passwords do not match!");
+      setTimeout(() => {
+        setErrMessage("");
+      }, 3000);
+      return false;
+    } else if (password.length < 6) {
+      setErrMessage("Password is too short!");
+      setTimeout(() => {
+        setErrMessage("");
+      }, 3000);
+      return false;
+    } else if (phone.length < 10) {
+      setErrMessage("Phone is wrong!");
+      setTimeout(() => {
+        setErrMessage("");
+      }, 3000);
+    } else {
+      const storeData = {
+        firstName,
+        lastName,
+        userName,
+        password,
+        role,
+        phone,
+      };
+      props.addUser(storeData);
+      toggleAddUser();
+    }
+  };
   return (
     <div>
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          backgroundColor: "orange",
-          height: "4rem",
-        }}
-      >
-        <img
-          src="/assets/logo1.png"
-          style={{ width: "8rem", height: "8rem" }}
-        />
-        <h2 className="add" style={{ marginRight: "20%" }}>
-          FoodApp
-        </h2>
-
-        {/* <h2 className="add" style={{marginRight:"3rem"}}>ACCOUNTS</h2>
-            <h2 className="add" style={{marginRight:"3rem"}}>SALES</h2>
-            <h2 className="add" style={{marginRight:"3rem",}}>PRODUCTS</h2> */}
-        <div style={{ marginLeft: "45rem" }}>
-          <i
-            className="fa fa-unlock-alt admin "
-            style={{ marginRight: "10px", fontSize: "1.5rem", margin: "1rem" }}
-            onClick={salePoint}
-          ></i>
-
-         
-          <div className="dropdown">
-   
-   <div class="dropdown">
-   <i
-            className="fa fa-ellipsis-v  dropbtn"
-            style={{ marginRight: "10px", fontSize: "1.5rem",marginLeft:"30px" }}
-          ></i>
-     {/* <button class="dropbtn">Dropdown</button> */}
-     <div class="dropdown-content">
-     <Link to ="/Sales">Sales</Link>
-     <Link to ="/Dishes">Dishes</Link>
-     <Link to ="/Accounts">Accounta</Link>
-
-     {/* <a href="#"> Dishes</a>
-     <a href="#">Accours</a> */}
-     </div>
-   </div>
-         </div>
-        </div>
-      </div>
+      <Header title="admin" />
       <div className="accounts">
-        <div className="accounts__card">
+        <div className="my-card">
+          <div className="table-title">Users List</div>
           <button
-            style={{
-              margin: "1rem",
-              float: "right",
-              backgroundColor: "green",
-              color: "white",
-              borderRadius: ".2rem",
-            }}
+            className="btn btn-primary btn-sm create-btn"
+            onClick={() => toggleAddUser()}
           >
             Add User
           </button>
-          <table>
-            <thead className="thead">
-              <tr className="thead">
-                <th>EMPLOYEE NAME</th>
-                <th>PHONE</th>
-                <th>USERNAME</th>
-                <th>ID</th>
-                <th>ACTIONE</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr className="tbody">
-                <td>ABDULLA ALHASSAN</td>
-                <td>0000000000</td>
-                <td>AALHASSAN</td>
-                <td>FA202100000</td>
-                <td>....</td>
-              </tr>
-              <tr>
-                <td>ABDULLA ALHASSAN</td>
-                <td>0000000000</td>
-                <td>AALHASSAN</td>
-                <td>FA202100000</td>
-                <td>....</td>
-              </tr>
-              <tr className="tbody">
-                <td>ABDULLA ALHASSAN</td>
-                <td>0000000000</td>
-                <td>AALHASSAN</td>
-                <td>FA202100000</td>
-                <td>....</td>
-              </tr>
-              <tr>
-                <td>ABDULLA ALHASSAN</td>
-                <td>0000000000</td>
-                <td>AALHASSAN</td>
-                <td>FA202100000</td>
-                <td>....</td>
-              </tr>
-            </tbody>
-          </table>
+          <Tables data={props.users} />
+          <Modals
+            title="add-user"
+            isOpen={isOpen}
+            toggleUser={toggleAddUser}
+            onAdd={_handleAdd}
+            onErr={errMessage}
+          />
         </div>
       </div>
-      
     </div>
   );
 }

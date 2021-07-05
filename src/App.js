@@ -4,19 +4,22 @@ import "./App.css";
 import Main from "./main/app/main";
 import Login from "./main/auth/login";
 import Users from "./main/app/users";
-import Sales from "./main/app/sales"
+import Sales from "./main/app/sales";
 import Dishes from "./main/app/dishes";
 
 // importing db files
 const { remote } = require("electron");
 const dishesInstance = remote.getGlobal("disheStore");
+const usersDbInstance = remote.getGlobal("userStore");
 
 function App() {
   const [allDishes, setDishes] = useState([]);
+  const [users, setUsers] = useState([]);
   const [currentUser, setCurrentUser] = useState({});
 
   useEffect(() => {
     getDishes();
+    getUsers();
   }, []);
 
   const getDishes = () => {
@@ -27,8 +30,21 @@ function App() {
     });
   };
 
+  const getUsers = () => {
+    usersDbInstance.readAll().then((res) => {
+      if (res) {
+        setUsers(res);
+      }
+    });
+  };
+
   const _handleLogin = (data) => {
-    setCurrentUser(data)
+    setCurrentUser(data);
+  };
+
+  const _handleAddUser = (data) => {
+    usersDbInstance.create(data);
+    getUsers();
   };
 
   return (
@@ -46,11 +62,14 @@ function App() {
               <Main {...props} dishes={allDishes} user={currentUser} />
             )}
           />
-          <Route path="/Accounts" component={Users} />
+          <Route
+            path="/Accounts"
+            render={(props) => (
+              <Users {...props} addUser={_handleAddUser} users={users} />
+            )}
+          />
           <Route path="/Sales" component={Sales} />
           <Route path="/Dishes" component={Dishes} />
-
-
         </Switch>
       </Router>
     </div>

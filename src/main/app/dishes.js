@@ -1,5 +1,5 @@
 import React from "react";
-import Modals from "./modals";
+import Modals from "./component/modals";
 
 function Dishes(props) {
     const Accounts = () => {

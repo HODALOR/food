@@ -9,7 +9,7 @@ function Main(props) {
   const user = props.user;
   return (
     <div>
-      <Header />
+      <Header title="main-paige" />
       <div className="main__card">
         <div
           style={{
@@ -21,7 +21,7 @@ function Main(props) {
             backgroundRepeat: "no-repeat",
             backgroundPosition: "center",
             backgroundSize: "cover",
-            borderRadius: "10px"
+            borderRadius: "10px",
           }}
         >
           <h1>RESTAURANT NAME</h1>

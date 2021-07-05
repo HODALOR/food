@@ -31,6 +31,7 @@ function Login(props) {
       props.history.push("/main");
     }
   };
+
   const Accounts = () => {
     props.history.push("/Accounts");
   };
@@ -38,38 +39,18 @@ function Login(props) {
   return (
     // <div>
     <div id="login">
-      <div
-        className="w3-container "
-        style={{
-          width: "32%",
-          backgroundColor: "white",
-          borderRadius: "1rem",
-          boxShadow: "0px 10px 50px",
-        }}
-      >
+      <div className="login-container">
         <div>
-          <div
-            className="container  "
-            style={{
-              backgroudColor: "orange",
-              borderBottom: "2px solid orange",
-            }}
-          >
+          <div className="login-card-top">
+            <h2 style={{ backgroudColor: "orange", color: "black" }}>
+              FoodApp
+            </h2>
             <i
-            
-              className="fa fa-unlock-alt  account__icon"
-              style={{
-                float: "right",
-                paddingRight: "2rem",
-                fontSize: "1.5rem",
-              }}
+              className="fa fa-lock  account__icon"
               type="button"
               role="button"
-              
               onClick={Accounts}
             ></i>
-
-            <h2 style={{ backgroudColor: "orange", color:"black" }}>FoodApp</h2>
           </div>
 
           <div>
@@ -78,42 +59,22 @@ function Login(props) {
               style={{ width: "8rem", height: "6rem" }}
             />
           </div>
-          <form
-            className="w3-container "
-            style={{ marginTop: "10%" }}
-            //   style={{ marginLeft: "30%", marginRight: "30%" }}
-          >
+          <form className="my-form">
             <p>
-              <label style={{ float: "left", paddingLeft: "1rem" }}>
-                User Name
-              </label>
+              <label>User Name</label>
               <input
-                className="w3-input"
+                className="input-field"
                 type="text"
                 value={userName}
-                style={{
-                  width: "90%",
-                  height: "3rem",
-                  border: "none",
-                  borderBottom: "1px solid orange",
-                }}
                 onChange={(e) => setUserName(e.target.value)}
               />
             </p>
             <p>
-              <label style={{ float: "left", paddingLeft: "1rem" }}>
-                Password
-              </label>
+              <label>Password</label>
               <input
-                className="w3-input"
+                className="input-field"
                 type="password"
                 value={password}
-                style={{
-                  width: "90%",
-                  height: "3rem",
-                  border: "none",
-                  borderBottom: "1px solid orange",
-                }}
                 onChange={(e) => setPassword(e.target.value)}
               />
             </p>

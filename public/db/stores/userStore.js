@@ -13,9 +13,9 @@ class userStore {
     });
 
     this.schemaValidator = ajv.compile(userSchema);
-    const userData = app.getAppPath("userData");
+    const productData = app.getAppPath("userData");
     const dbPath = path.join(
-      isDev ? userData : process.resourcesPath,
+      isDev ? productData : process.resourcesPath,
       "DataStore/users.db"
     );
     this.db = DataStore.create({
@@ -30,10 +30,17 @@ class userStore {
   }
 
   create(data) {
-    return this.db.insert(data);
+    const isValid = this.validate(data);
+    if (isValid) {
+      return this.db.insert(data);
+    }
   }
 
-  read(userName) {
+  read(_id) {
+    return this.db.findOne({ _id }).exec();
+  }
+
+  readUser(userName) {
     return this.db.findOne({ userName }).exec();
   }
 
@@ -41,8 +48,8 @@ class userStore {
     return this.db.find();
   }
 
-  removeUser(_id) {
-    return this.db.remove({ _id });
+  removeUser(id) {
+    return this.db.remove({ _id: id });
   }
 
   updateUser(userData) {
