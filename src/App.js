@@ -43,8 +43,16 @@ function App() {
   };
 
   const _handleAddUser = (data) => {
-    usersDbInstance.create(data);
-    getUsers();
+    const newUser = users.find((user) => user.password === data.password);
+    if (newUser === null || newUser === undefined) {
+      usersDbInstance.create(data);
+      getUsers();
+    } else {
+      alert(
+        "The password you are trying to useis alredy take, please choose another one!"
+      );
+      return false;
+    }
   };
 
   const _deleteUser = (id) => {
