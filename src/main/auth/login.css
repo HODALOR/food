@@ -4,22 +4,58 @@
   padding-top: 7%;
   display: flex;
   justify-content: center;
-  align-items: baseline;
+  align-items: center;
 }
-.loginbtn{
+.loginbtn {
   background-color: orange;
   font-weight: bold;
   font-size: 1rem;
 }
-.loginbtn:hover{
- background-color:orangered;
- color: honeydew;
- cursor: pointer;
-
+.loginbtn:hover {
+  background-color: orangered;
+  color: honeydew;
+  cursor: pointer;
 }
 
-.account__icon:hover{
-  color:orangered;
- cursor: pointer;
+.account__icon:hover {
+  color: orangered;
+  cursor: pointer;
+}
 
+.login-container {
+  width: 32%;
+  background-color: white;
+  border-radius: 1rem;
+  box-shadow: 0px 10px 50px;
+}
+
+.login-card-top {
+  background-color: orange;
+  border-bottom: 2px solid orange;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-right: 20px;
+  margin-left: 20px;
+  font-weight: bolder;
+}
+
+.account__icon {
+  font-size: 24px;
+}
+
+.my-form {
+  text-align: left;
+  padding-left: 20px;
+}
+
+.input-field {
+  width: 90%;
+  height: 25px;
+  border: none;
+  border-bottom: 1px solid orange;
 }

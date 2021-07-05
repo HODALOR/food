@@ -1,41 +1,42 @@
+const { app, BrowserWindow } = require("electron");
+const isDev = require("electron-is-dev");
+const path = require("path");
 
-const { app, BrowserWindow } = require('electron')
-const isDev = require("electron-is-dev")
-const path = require("path")
-
-const usersStore = require("./db/stores/usersStore");
+const userStore = require("./db/stores/userStore");
 const salesStore = require("./db/stores/salesStore");
-const disheStore = require("./db/stores/dishesStore");
+const dishStore = require("./db/stores/dishesStore");
 
-global.usersStore = usersStore;
+global.userStore = userStore;
 global.salesStore = salesStore;
-global.disheStore = disheStore;
+global.dishStore = dishStore;
 
-function createWindow () {
+function createWindow() {
   const win = new BrowserWindow({
     show: false,
     webPreferences: {
       nodeIntegration: true,
       webSecurity: false,
-    }
-  })
+    },
+  });
 
   win.maximize();
   win.show();
   // win.removeMenu();
 
   win.loadURL(
-    isDev ? "http://localhost:3000" : `file://${path.join(__dirname, "../build/index.html")}`
+    isDev
+      ? "http://localhost:3000"
+      : `file://${path.join(__dirname, "../build/index.html")}`
   );
 }
 
-app.whenReady().then(createWindow)
+app.whenReady().then(createWindow);
 
-app.on('window-all-closed', () => {
-  if (process.platform !== 'darwin') {
-    app.quit()
+app.on("window-all-closed", () => {
+  if (process.platform !== "darwin") {
+    app.quit();
   }
-})
+});
 
 // app.setPath(
 //   'userData',
@@ -44,17 +45,17 @@ app.on('window-all-closed', () => {
 //     : path.join(process.resourcesPath, 'userdata/') // In production it creates userdata folder in the resources folder
 // );
 
-app.on('activate', () => {
+app.on("activate", () => {
   if (BrowserWindow.getAllWindows().length === 0) {
-    createWindow()
+    createWindow();
   }
-})
+});
 
-if(isDev){
+if (isDev) {
   try {
-    require('electron-reloader')(module, {
+    require("electron-reloader")(module, {
       debug: true,
-      watchRenderer: true
-    })
+      watchRenderer: true,
+    });
   } catch (_) {}
 }

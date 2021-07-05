@@ -4,19 +4,22 @@ import "./App.css";
 import Main from "./main/app/main";
 import Login from "./main/auth/login";
 import Users from "./main/app/users";
-import Sales from "./main/app/sales"
+import Sales from "./main/app/sales";
 import Dishes from "./main/app/dishes";
 
 // importing db files
 const { remote } = require("electron");
-const dishesInstance = remote.getGlobal("disheStore");
+const dishesInstance = remote.getGlobal("dishStore");
+const usersDbInstance = remote.getGlobal("userStore");
 
 function App() {
   const [allDishes, setDishes] = useState([]);
+  const [users, setUsers] = useState([]);
   const [currentUser, setCurrentUser] = useState({});
 
   useEffect(() => {
     getDishes();
+    getUsers();
   }, []);
 
   const getDishes = () => {
@@ -27,8 +30,50 @@ function App() {
     });
   };
 
+  const getUsers = () => {
+    usersDbInstance.readAll().then((res) => {
+      if (res) {
+        setUsers(res);
+      }
+    });
+  };
+
   const _handleLogin = (data) => {
-    setCurrentUser(data)
+    setCurrentUser(data);
+  };
+
+  const _handleAddUser = (data) => {
+    usersDbInstance.create(data);
+    getUsers();
+  };
+
+  const _deleteUser = (id) => {
+    usersDbInstance.removeUser(id);
+    getUsers();
+  };
+
+  const _editUser = (data) => {
+    usersDbInstance.updateUser(data).then((res) => {
+      if (res === 1) {
+        getUsers();
+      }
+    });
+  };
+
+  const _handleAddDish = (data) => {
+    dishesInstance.create(data);
+    getDishes();
+  };
+  const _handleDelDish = (id) => {
+    dishesInstance.removeDish(id);
+    getDishes();
+  };
+  const _handleEditDish = (data) => {
+    dishesInstance.updateDish(data).then((res) => {
+      if (res === 1) {
+        getDishes();
+      }
+    });
   };
 
   return (
@@ -46,11 +91,31 @@ function App() {
               <Main {...props} dishes={allDishes} user={currentUser} />
             )}
           />
-          <Route path="/Accounts" component={Users} />
+          <Route
+            path="/Accounts"
+            render={(props) => (
+              <Users
+                {...props}
+                addUser={_handleAddUser}
+                users={users}
+                onDelete={_deleteUser}
+                onEdit={_editUser}
+              />
+            )}
+          />
           <Route path="/Sales" component={Sales} />
-          <Route path="/Dishes" component={Dishes} />
-
-
+          <Route
+            path="/Dishes"
+            render={(props) => (
+              <Dishes
+                {...props}
+                dishes={allDishes}
+                addDish={_handleAddDish}
+                onDelete={_handleDelDish}
+                onEdit={_handleEditDish}
+              />
+            )}
+          />
         </Switch>
       </Router>
     </div>

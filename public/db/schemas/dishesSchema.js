@@ -7,9 +7,6 @@ const dishesSchema = {
     price: {
       type: "string",
     },
-    image: {
-      type: "string",
-    },
   },
 };
 
