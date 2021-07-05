@@ -1,3 +1,5 @@
+import {mdb} from "mdbreact"
+
 export default function Tables(props) {
   if (props.title === "users-table") {
     return (

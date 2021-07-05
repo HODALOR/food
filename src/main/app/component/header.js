@@ -25,7 +25,7 @@ function Header(props) {
               <div className="dropdown-content">
                 <Link to="/Sales">Sales</Link>
                 <Link to="/Dishes">Dishes</Link>
-                {/* <Link to="/Accounts">Accounta</Link> */}
+                <Link to="/Accounts">Accounts</Link>
                 <Link to="/">Logout</Link>
 
               </div>

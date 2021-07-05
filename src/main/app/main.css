@@ -93,16 +93,20 @@ table {
   height: 30px;
   font-weight: bold;
 }
-
-/* .tbody {
-  height: 60vh;
-} */
-
+/* 
 tbody {
-  overflow: auto;
   height: 60vh;
-  display: block;
+}  */
+
+table{
+  
+    /* width: 900px; */
+    height: 40%;
+    /* background-color: #eee; */
+    overflow-y:scroll;
+  
 }
+
 
 .admin:hover {
   color: orangered;
@@ -183,3 +187,5 @@ tbody {
 .danger-mssg {
   color: red;
 }
+
+/* table stytle */
