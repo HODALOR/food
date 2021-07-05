@@ -44,6 +44,10 @@ class userStore {
     return this.db.findOne({ userName }).exec();
   }
 
+  readAdmin(password) {
+    return this.db.findOne({ password }).exec();
+  }
+
   readAll() {
     return this.db.find();
   }
