@@ -190,4 +190,58 @@ table {
   height: 90%;
 }
 
+.cart {
+  float: right;
+  font-size: 30px;
+  margin-left: 5px;
+  color: black;
+}
 
+.res-place {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.cart-place {
+  background-color: whitesmoke;
+  padding: 5px;
+  width: 90px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.my-badge {
+  color: black;
+  font-weight: bold;
+  font-size: 22px;
+  width: 50%;
+}
+
+.errMessage {
+  font-size: 22px;
+  color: red;
+  background-color: cornsilk;
+  font-weight: bold;
+  padding: 10px;
+  border-radius: 10px;
+  width: 30%;
+}
+
+.err-div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.quantity {
+  height: 3rem;
+  border-radius: 0.5rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  border: 1px;
+  background-color: white;
+  width: 7rem;
+  text-align: center;
+}

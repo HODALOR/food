@@ -440,16 +440,16 @@ export default function Modals(props) {
             </MDBBtn>
             <MDBBtn
               className="btn btn-success btn-sm"
-              onClick={() => _handleAddDish("edit-dish")}
+              onClick={() => props.onBuy()}
             >
-              Print
+              Save changes
             </MDBBtn>
-            {/* <MDBBtn
+            <MDBBtn
               className="btn btn-success btn-sm"
-              onClick={() => _handleDelete(props.row._id)}
+              onClick={() => props.onClear()}
             >
-              Delete Dish
-            </MDBBtn> */}
+              Clear Cart
+            </MDBBtn>
           </MDBModalFooter>
         </MDBModal>
       </MDBContainer>

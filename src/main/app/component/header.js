@@ -11,23 +11,32 @@ function Header(props) {
             src="/assets/logo1.png"
             style={{ width: "60px", height: "60px" }}
           />
-          <div className="dropdown " style={{display:"flex", alignItems:"center", marginLeft:"90%"}}>
-            <div className="dropdown" >
+          <div
+            className="dropdown "
+            style={{ display: "flex", alignItems: "center", marginLeft: "90%" }}
+          >
+            <div className="dropdown">
               <i
                 className="fa fa-ellipsis-v  dropbtn"
                 style={{
                   marginRight: "10px",
                   fontSize: "1.5rem",
                   marginLeft: "30px",
-                
                 }}
               ></i>
               <div className="dropdown-content">
-                <Link to="/Sales">Sales</Link>
-                <Link to="/Dishes">Dishes</Link>
-                <Link to="/Accounts">Accounts</Link>
-                <Link to="/">Logout</Link>
-
+                <Link to="/Sales">
+                  <i className="fa fa-money-check-alt"></i> Sales
+                </Link>
+                <Link to="/Dishes">
+                  <i className="fa fa-hamburger"></i> Dishes
+                </Link>
+                <Link to="/Accounts">
+                  <i className="fa fa-users"></i> Accounts
+                </Link>
+                <Link to="/">
+                  <i className="fa fa-lock"></i> Logout
+                </Link>
               </div>
             </div>
           </div>
@@ -42,9 +51,9 @@ function Header(props) {
             src="/assets/logo1.png"
             style={{ width: "60px", height: "60px" }}
           />
-          <div className="right">
-            <i class="fa fa-cart-plus" style={{ float: "flex-end" }}></i>
-          </div>
+          <Link to="/" className="right">
+            <i class="fa fa-lock" style={{ float: "flex-end" }}></i>
+          </Link>
         </div>
       </div>
     );

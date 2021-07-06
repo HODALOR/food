@@ -1,12 +1,77 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "./component/header";
+import Modals from "./component/modals";
 import "./main.css";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faCoffee } from "@fortawesome/free-solid-svg-icons";
 
 function Main(props) {
+  const [slectedDish, setDish] = useState("");
+  const [cart, setCart] = useState([]);
+  const [err, setErr] = useState("");
+  const [isOpen, setIsOpen] = useState(false);
+  const [qt, setQt] = useState("");
   const data = props.dishes;
-  const user = props.user;
+  const getPrice = () => {
+    const selctDish = data.find((dish) => dish.dishName === slectedDish);
+    if (selctDish) {
+      return selctDish.price;
+    } else {
+      return "";
+    }
+  };
+  const _showCart = () => {
+    if (cart.length < 10) {
+      return (
+        <button className="cart-place btn-warning" onClick={() => _openModal()}>
+          <span className="my-badge">0{cart.length}</span>
+          <i className="fa fa-cart-arrow-down cart"></i>
+        </button>
+      );
+    } else {
+      <button className="cart-place btn-warning" onClick={() => _openModal()}>
+        <span className="my-badge">{cart.length}</span>
+        <i className="fa fa-cart-arrow-down cart"></i>
+      </button>;
+    }
+  };
+  const _handleAddToCart = () => {
+    const dish = data.find((d) => d.dishName === slectedDish);
+    if (qt === "") {
+      setErr("Quantity cannot be 0!");
+      setTimeout(() => {
+        setErr("");
+        setQt("");
+      }, 3000);
+    } else {
+      if (slectedDish !== "") {
+        dish.quantity = qt;
+        let newCart = [...cart, dish];
+        setCart(newCart);
+        setDish("");
+      } else {
+        setErr("Please select a dish first!");
+        setTimeout(() => {
+          setErr("");
+          setQt("");
+        }, 3000);
+      }
+    }
+  };
+  const _openModal = () => {
+    if (cart.length === 0) {
+      setErr("Cart is empty!");
+      setTimeout(() => {
+        setErr("");
+      }, 3000);
+    } else {
+      _toggleModal();
+    }
+  };
+  const _toggleModal = () => {
+    setIsOpen(!isOpen);
+  };
+  const _handleBuy = () => {};
+  const _handleClear = () => {};
+  const _handleRemove = () => {};
   return (
     <div>
       <Header title="main-paige" />
@@ -24,19 +89,44 @@ function Main(props) {
             borderRadius: "10px",
           }}
         >
-          <h1>RESTAURANT NAME</h1>
+          <div className="res-place">
+            <h1>RESTAURANT NAME</h1>
+            {_showCart()}
+          </div>
           <div className="select">
-            <select>
+            <select onChange={(e) => setDish(e.target.value)}>
               <option>Select dish...</option>
               {data.map((dish) => {
                 return <option>{dish.dishName}</option>;
               })}
             </select>
-            <div className="prices">GHC</div>
-            <button type="button" role="button" className="add">
+            <div className="prices">GHC {getPrice()}</div>
+            <input
+              className="quantity"
+              placeholder="# of parckages"
+              type="number"
+              onChange={(e) => setQt(e.target.value)}
+            />
+            <button
+              type="button"
+              className="add"
+              onClick={() => _handleAddToCart()}
+            >
               <i className="fa fa-cart-plus"></i> Add to Cart
             </button>
           </div>
+          <div className="err-div">
+            {err === "" ? "" : <div className="errMessage">{err}</div>}
+          </div>
+          <Modals
+            title="cart-modal"
+            isOpen={isOpen}
+            data={cart}
+            toggleModal={_toggleModal}
+            onBuy={_handleBuy}
+            onClear={_handleClear}
+            onRemove={_handleRemove}
+          />
         </div>
       </div>
     </div>
