@@ -412,19 +412,18 @@ export default function Modals(props) {
         </MDBModal>
       </MDBContainer>
     );
-  } else if (props.title === "cart-modal") {
+  } else if (props.title === "sales-modal") {
     return (
       <MDBContainer>
         <MDBModal
           disableBackdrop
           isOpen={props.isOpen}
-          toggle={props.toggleModal}
+          toggle={props.toggleDish}
           size="lg"
-          centered
         >
           <MDBModalHeader
             className="modal-title"
-            toggle={() => props.toggleModal()}
+            toggle={() => props.toggleDish("edit-dish")}
           >
             CART
           </MDBModalHeader>
@@ -461,7 +460,7 @@ export default function Modals(props) {
           <MDBModalFooter>
             <MDBBtn
               className="btn btn-secondary btn-sm"
-              onClick={() => props.toggleModal()}
+              onClick={() => props.toggleDish("edit-dish")}
             >
               Close
             </MDBBtn>
