@@ -28,12 +28,6 @@ function Sales(props) {
       <div className="accounts">
         <div className="my-card">
           <div className="table-title">Dishes List</div>
-          <button
-            className="btn btn-primary btn-sm create-btn"
-            onClick={() => toggleDish("add-dish")}
-          >
-            Add Dish
-          </button>
           <div>
             <div className="my-card-body">
               <Tables
@@ -43,12 +37,6 @@ function Sales(props) {
               />
             </div>
           </div>
-          <Modals
-            title={title}
-            isOpen={isOpen}
-            toggleDish={toggleDish}
-            row={row}
-          />
         </div>
       </div>
     </div>

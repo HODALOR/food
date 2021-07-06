@@ -55,7 +55,7 @@ export default function Tables(props) {
     columns: [
       {
         label: "DISH NAME",
-        field: "dishName",
+        field: "food",
         width: 250,
         attributes: {
           "aria-controls": "DataTable",
@@ -73,8 +73,8 @@ export default function Tables(props) {
         width: 50,
       },
       {
-        label: "BUYER",
-        field: "buyer",
+        label: "Date",
+        field: "date",
         width: 50,
       },
       {
@@ -85,7 +85,7 @@ export default function Tables(props) {
     ],
     rows: props.data.map((sale) => {
       const action = () => {
-        return <i className="fa fa-elipse-v"></i>;
+        return <i className="fa fa-print"></i>;
       };
       sale.action = action();
       return sale;
