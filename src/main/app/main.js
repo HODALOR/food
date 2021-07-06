@@ -35,7 +35,7 @@ function Main(props) {
   };
   const _handleAddToCart = () => {
     const dish = data.find((d) => d.dishName === slectedDish);
-    if (qt === "") {
+    if (qt === "" || qt === "0") {
       setErr("Quantity cannot be 0!");
       setTimeout(() => {
         setErr("");
@@ -69,9 +69,26 @@ function Main(props) {
   const _toggleModal = () => {
     setIsOpen(!isOpen);
   };
-  const _handleBuy = () => {};
-  const _handleClear = () => {};
-  const _handleRemove = () => {};
+  const _handleBuy = () => {
+    props.onAdd(cart);
+    setCart([]);
+    _toggleModal();
+  };
+  const _handleClear = () => {
+    setCart([]);
+    _toggleModal();
+  };
+  const _handleRemove = (id) => {
+    const newCart = [];
+    cart.forEach((dish) => {
+      if (dish._id === id) {
+        cart.slice(dish);
+      } else {
+        newCart.push(dish);
+      }
+      setCart(newCart);
+    });
+  };
   return (
     <div>
       <Header title="main-paige" />

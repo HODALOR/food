@@ -3,11 +3,11 @@ const isDev = require("electron-is-dev");
 const path = require("path");
 
 const userStore = require("./db/stores/userStore");
-const salesStore = require("./db/stores/salesStore");
+const saleStore = require("./db/stores/salesStore");
 const dishStore = require("./db/stores/dishesStore");
 
 global.userStore = userStore;
-global.salesStore = salesStore;
+global.saleStore = saleStore;
 global.dishStore = dishStore;
 
 function createWindow() {

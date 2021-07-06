@@ -23,7 +23,7 @@ function Login(props) {
           alert("User does not exist, please check user name or password");
           return false;
         } else {
-          props.data(user);
+          localStorage.setItem("user", JSON.stringify(user));
           props.history.push("/main");
           setPassword("");
           setUserName("");

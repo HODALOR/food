@@ -68,6 +68,28 @@ export default function Modals(props) {
     props.onDelete(id);
   };
 
+  const _dishPrice = (dish) => {
+    const price = parseInt(dish.price) * parseInt(dish.quantity);
+    return price;
+  };
+
+  const _totalQuantity = (data) => {
+    let qt = 0;
+    data.forEach((dish) => {
+      qt += parseInt(dish.quantity);
+    });
+    return qt;
+  };
+
+  const _totalPrice = (data) => {
+    let tprice = 0;
+    data.forEach((dish) => {
+      let price = parseInt(dish.price) * parseInt(dish.quantity);
+      tprice += price;
+    });
+    return tprice;
+  };
+
   if (props.title === "add-user") {
     return (
       <MDBContainer>
@@ -404,9 +426,38 @@ export default function Modals(props) {
             className="modal-title"
             toggle={() => props.toggleModal()}
           >
-            DISH MODAL
+            CART
           </MDBModalHeader>
-          <MDBModalBody>vmbfmv</MDBModalBody>
+          <MDBModalBody>
+            <div className="car-header">
+              <div className="cart-name">Dish Name</div>
+              <div className="cart-number">Number Of Parcks</div>
+              <div className="cart-price">Price(GHC)</div>
+              <div className="cart-remove-h">Remove</div>
+            </div>
+            {props.data.map((dish) => {
+              return (
+                <div className="cart-body">
+                  <div className="cart-name">{dish.dishName}</div>
+                  <div className="cart-number">{dish.quantity}</div>
+                  <div className="cart-price">{_dishPrice(dish)}</div>
+                  <div
+                    className="cart-remove"
+                    type="button"
+                    role="button"
+                    onClick={() => props.onRemove(dish._id)}
+                  >
+                    <i className="fa fa-trash-alt"></i>
+                  </div>
+                </div>
+              );
+            })}
+            <div className="cart-body">
+              <div className="cart-total">Totals</div>
+              <div className="cart-number-t">{_totalQuantity(props.data)}</div>
+              <div className="cart-price-t">{_totalPrice(props.data)}</div>
+            </div>
+          </MDBModalBody>
           <MDBModalFooter>
             <MDBBtn
               className="btn btn-secondary btn-sm"
@@ -418,7 +469,7 @@ export default function Modals(props) {
               className="btn btn-success btn-sm"
               onClick={() => props.onBuy()}
             >
-              Save changes
+              Buy
             </MDBBtn>
             <MDBBtn
               className="btn btn-success btn-sm"

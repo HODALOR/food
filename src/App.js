@@ -11,15 +11,17 @@ import Dishes from "./main/app/dishes";
 const { remote } = require("electron");
 const dishesInstance = remote.getGlobal("dishStore");
 const usersDbInstance = remote.getGlobal("userStore");
+const salesDbInstance = remote.getGlobal("saleStore");
 
 function App() {
   const [allDishes, setDishes] = useState([]);
   const [users, setUsers] = useState([]);
-  const [currentUser, setCurrentUser] = useState({});
+  const [sales, setSales] = useState([]);
 
   useEffect(() => {
     getDishes();
     getUsers();
+    getSales();
   }, []);
 
   const getDishes = () => {
@@ -38,8 +40,12 @@ function App() {
     });
   };
 
-  const _handleLogin = (data) => {
-    setCurrentUser(data);
+  const getSales = () => {
+    salesDbInstance.readAll().then((res) => {
+      if (res) {
+        setSales(res);
+      }
+    });
   };
 
   const _handleAddUser = (data) => {
@@ -72,10 +78,12 @@ function App() {
     dishesInstance.create(data);
     getDishes();
   };
+
   const _handleDelDish = (id) => {
     dishesInstance.removeDish(id);
     getDishes();
   };
+
   const _handleEditDish = (data) => {
     dishesInstance.updateDish(data).then((res) => {
       if (res === 1) {
@@ -84,19 +92,31 @@ function App() {
     });
   };
 
+  const _saveSale = async (cart) => {
+    const userData = localStorage.getItem("user");
+    const user = await JSON.parse(userData);
+    cart.forEach((dish) => {
+      let data = {
+        food: dish.dishName,
+        price: JSON.stringify(parseInt(dish.price) * parseInt(dish.quantity)),
+        quantity: dish.quantity,
+        date: new Date().toLocaleString(),
+        userName: user.userName,
+      };
+      salesDbInstance.create(data);
+      getSales();
+    });
+  };
+
   return (
     <div className="App">
       <Router>
         <Switch>
-          <Route
-            exact
-            path="/"
-            render={(props) => <Login {...props} data={_handleLogin} />}
-          />
+          <Route exact path="/" render={(props) => <Login {...props} />} />
           <Route
             path="/main"
             render={(props) => (
-              <Main {...props} dishes={allDishes} user={currentUser} />
+              <Main {...props} dishes={allDishes} onAdd={_saveSale} />
             )}
           />
           <Route
@@ -111,7 +131,10 @@ function App() {
               />
             )}
           />
-          <Route path="/Sales" component={Sales} />
+          <Route
+            path="/Sales"
+            render={(props) => <Sales {...props} sales={sales} />}
+          />
           <Route
             path="/Dishes"
             render={(props) => (

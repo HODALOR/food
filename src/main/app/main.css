@@ -245,3 +245,63 @@ table {
   width: 7rem;
   text-align: center;
 }
+
+.car-header {
+  border: black solid 1px;
+  height: 25px;
+  display: flex;
+  font-weight: bold;
+  color: black;
+}
+
+.cart-name {
+  width: 40%;
+  border-right: solid black 1px;
+}
+
+.cart-total {
+  width: 50%;
+  border-right: solid black 1px;
+}
+
+.cart-number {
+  width: 25%;
+  border-right: solid black 1px;
+}
+
+.cart-number-t {
+  width: 25%;
+  border-right: solid black 1px;
+  color: red;
+}
+
+.cart-price {
+  width: 25%;
+  border-right: solid black 1px;
+}
+
+.cart-price-t {
+  width: 25%;
+  color: red;
+}
+
+.cart-remove {
+  width: 10%;
+  color: red;
+}
+
+.cart-remove-h {
+  width: 10%;
+}
+
+.cart-body {
+  border: black solid 1px;
+  border-top: none;
+  display: flex;
+  font-weight: bold;
+}
+
+.capture-buyer {
+  margin-left: 40px;
+  text-align: center;
+}

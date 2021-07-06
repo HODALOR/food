@@ -7,13 +7,13 @@ const salesSchema = {
     price: {
       type: "string",
     },
+    quantity: {
+      type: "string",
+    },
     date: {
       type: "string",
     },
     userName: {
-      type: "string",
-    },
-    buyer: {
       type: "string",
     },
   },
