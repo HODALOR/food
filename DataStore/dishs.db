@@ -1,5 +1,6 @@
 {"dishName":"gf","price":"6","_id":"04uQhMxJFBJqvG4t","createdAt":{"$$date":1625489167277},"updatedAt":{"$$date":1625489167277}}
 {"dishName":"bgxcfb","price":"3","_id":"2gZ72C1SHbTku1qH","createdAt":{"$$date":1625489146020},"updatedAt":{"$$date":1625489146020}}
+{"dishName":"bghvshdwas","price":"55","_id":"37OluCkS5UXKu4CS","createdAt":{"$$date":1625495926901},"updatedAt":{"$$date":1625495926901}}
 {"dishName":"cdnhchd","price":"36352","_id":"4AB2R7sdE7t17Zg3","createdAt":{"$$date":1625488974402},"updatedAt":{"$$date":1625488974402}}
 {"dishName":"TZ","price":"456","_id":"BrHkGiy717R6vOmU","createdAt":{"$$date":1625488906368},"updatedAt":{"$$date":1625488906368}}
 {"dishName":"sxdfbx","price":"5432","_id":"CGLAI8y7vNpjbMoW","createdAt":{"$$date":1625489117690},"updatedAt":{"$$date":1625489117690}}
@@ -10,6 +11,7 @@
 {"dishName":"bg","price":"8","_id":"aiZVnsTEBtwMqADl","createdAt":{"$$date":1625489188671},"updatedAt":{"$$date":1625489188671}}
 {"dishName":"fteury","price":"67563","_id":"bDSITM4xOvZOmZWX","createdAt":{"$$date":1625489099587},"updatedAt":{"$$date":1625489099587}}
 {"dishName":"gf","price":"9","_id":"e4BJgOtNPlTcq12M","createdAt":{"$$date":1625489209399},"updatedAt":{"$$date":1625489209399}}
+{"dishName":"edkjn","price":"4","_id":"fXfuf9ZLN3eXdybc","createdAt":{"$$date":1625495938783},"updatedAt":{"$$date":1625495938783}}
 {"dishName":"gf","price":"4","_id":"hluevJPe8YqJzG4r","createdAt":{"$$date":1625489156316},"updatedAt":{"$$date":1625489156316}}
 {"dishName":"ndbc","price":"3256","_id":"j0wmnDCvsrmRI9lR","createdAt":{"$$date":1625488964732},"updatedAt":{"$$date":1625488964732}}
 {"dishName":"dhfcgdsnm","price":"3","_id":"j6YTihYKmjoHh1Qz","createdAt":{"$$date":1625488922676},"updatedAt":{"$$date":1625488922676}}
@@ -20,5 +22,5 @@
 {"dishName":"nbngv","price":"543526","_id":"sUwdYRFGnjCKCk5F","createdAt":{"$$date":1625489135728},"updatedAt":{"$$date":1625489135728}}
 {"dishName":"sxfxd","price":"4","_id":"tm5lp947ssiefTxT","createdAt":{"$$date":1625489108798},"updatedAt":{"$$date":1625489108798}}
 {"dishName":"y6345376","price":"435","_id":"xQJZBWqaYFdFtKec","createdAt":{"$$date":1625488954747},"updatedAt":{"$$date":1625488954747}}
-{"dishName":"bghvshdwas","price":"55","_id":"37OluCkS5UXKu4CS","createdAt":{"$$date":1625495926901},"updatedAt":{"$$date":1625495926901}}
-{"dishName":"edkjn","price":"4","_id":"fXfuf9ZLN3eXdybc","createdAt":{"$$date":1625495938783},"updatedAt":{"$$date":1625495938783}}
+{"$$deleted":true,"_id":"4AB2R7sdE7t17Zg3"}
+{"$$deleted":true,"_id":"04uQhMxJFBJqvG4t"}

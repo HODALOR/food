@@ -98,15 +98,12 @@ tbody {
   height: 60vh;
 }  */
 
-table{
-  
-    /* width: 900px; */
-    height: 40%;
-    /* background-color: #eee; */
-    overflow-y:scroll;
-  
+table {
+  /* width: 900px; */
+  height: 40%;
+  /* background-color: #eee; */
+  overflow-y: scroll;
 }
-
 
 .admin:hover {
   color: orangered;
@@ -188,4 +185,9 @@ table{
   color: red;
 }
 
-/* table stytle */
+.my-table {
+  margin-top: 40px;
+  height: 90%;
+}
+
+

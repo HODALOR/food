@@ -1,3 +1,4 @@
 {"firstName":"user1","lastName":"user1","userName":"user1pro","password":"123456","phone":"0563754329","role":"Employee","_id":"O16Xvh469inrDZsm","createdAt":{"$$date":1625473587444},"updatedAt":{"$$date":1625474580512}}
 {"firstName":"Prince","lastName":"Admin","userName":"prince","password":"prince1","role":"Admin","phone":"347344347854","_id":"dY7YiF1aKqOO71UF","createdAt":{"$$date":1625479914879},"updatedAt":{"$$date":1625479914879}}
 {"firstName":"Abdul","lastName":"Admin","userName":"alfuty09","password":"ilyaseen19","role":"Admin","phone":"0547661420","_id":"eKTN0SwReBob6q19","createdAt":{"$$date":1625479175099},"updatedAt":{"$$date":1625479175099}}
+{"$$deleted":true,"_id":"O16Xvh469inrDZsm"}
