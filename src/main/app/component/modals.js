@@ -390,5 +390,45 @@ export default function Modals(props) {
         </MDBModal>
       </MDBContainer>
     );
+  } else if (props.title === "cart-modal") {
+    return (
+      <MDBContainer>
+        <MDBModal
+          disableBackdrop
+          isOpen={props.isOpen}
+          toggle={props.toggleModal}
+          size="lg"
+          centered
+        >
+          <MDBModalHeader
+            className="modal-title"
+            toggle={() => props.toggleModal()}
+          >
+            DISH MODAL
+          </MDBModalHeader>
+          <MDBModalBody>vmbfmv</MDBModalBody>
+          <MDBModalFooter>
+            <MDBBtn
+              className="btn btn-secondary btn-sm"
+              onClick={() => props.toggleModal()}
+            >
+              Close
+            </MDBBtn>
+            <MDBBtn
+              className="btn btn-success btn-sm"
+              onClick={() => props.onBuy()}
+            >
+              Save changes
+            </MDBBtn>
+            <MDBBtn
+              className="btn btn-success btn-sm"
+              onClick={() => props.onClear()}
+            >
+              Clear Cart
+            </MDBBtn>
+          </MDBModalFooter>
+        </MDBModal>
+      </MDBContainer>
+    );
   }
 }
