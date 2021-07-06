@@ -1,72 +1,58 @@
-import { returnStatement } from '@babel/types'
-import React from 'react'
-
+import { useState } from "react";
+import "./main.css";
+import Header from "./component/header";
+import Tables from "./component/tables";
+import Modals from "./component/modals";
 
 function Sales(props) {
-      const Accounts = () => {
-    props.history.push("/Accounts");
+  const [isOpen, setIsOpen] = useState(false);
+  const [title, setTitle] = useState("sales-modal");
+  const [errMessage, setErrMessage] = useState("");
+  const [row, setRow] = useState({});
+  const toggleDish = (check) => {
+    if (check === "add-dish") {
+      setTitle(check);
+      setIsOpen(!isOpen);
+    } else {
+      setTitle(check);
+      setIsOpen(!isOpen);
+    }
   };
-    return(
-        <div>
-            {/* back to accounts page */}
-            <h5 onClick={Accounts} className="account__icon" style={{color:"black"}}>Lock</h5>
-
-            <div className="accounts">
-        <div className="accounts__card">
-          <button 
-            style={{
-              margin: "1rem",
-              float: "right",
-              backgroundColor: "green",
-              color: "white",
-              borderRadius: ".2rem",
-            }}
+  const _handleRowClick = (data) => {
+    setRow(data);
+    toggleDish("edit-dish");
+  };
+  return (
+    <div>
+      <Header title="admin" />
+      <div className="accounts">
+        <div className="my-card">
+          <div className="table-title">Dishes List</div>
+          <button
+            className="btn btn-primary btn-sm create-btn"
+            onClick={() => toggleDish("add-dish")}
           >
-            Print
+            Add Dish
           </button>
-          <table>
-            <thead className="thead">
-              <tr className="thead">
-                <th>Dish</th>
-                <th>Price</th>
-                <th>Vendor</th>
-                <th>Buyer</th>
-                <th>Date</th>
-                <th>ACTIONE</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr className="tbody">
-                <td>Tz& Ayoyo</td>
-                <td>GHS17.00</td>
-                <td>Acheampong</td>
-                <td>Alhasan</td>
-                <td>7 July 2021</td>
-
-                <td>....</td>
-              </tr>
-              <tr className="tbody">
-                <td>Tz& Ayoyo</td>
-                <td>GHS17.00</td>
-                <td>Acheampong</td>
-                <td>Alhasan</td>
-                <td>7 July 2021</td>
-                <td>....</td>
-              </tr> <tr className="tbody">
-                <td>Tz& Ayoyo</td>
-                <td>GHS17.00</td>
-                <td>Acheampong</td>
-                <td>Alhasan</td>
-                <td>7 July 2021</td>
-                <td>....</td>
-              </tr>
-              
-            </tbody>
-          </table>
+          <div>
+            <div className="my-card-body">
+              <Tables
+                data={props.sales}
+                title="sales-table"
+                onRowClicked={_handleRowClick}
+              />
+            </div>
+          </div>
+          <Modals
+            title={title}
+            isOpen={isOpen}
+            toggleDish={toggleDish}
+            row={row}
+          />
         </div>
       </div>
-        </div>
-    )
+    </div>
+  );
 }
 
 export default Sales;

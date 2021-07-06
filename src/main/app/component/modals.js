@@ -390,5 +390,69 @@ export default function Modals(props) {
         </MDBModal>
       </MDBContainer>
     );
+  } else if (props.title === "sales-modal") {
+    return (
+      <MDBContainer>
+        <MDBModal
+          disableBackdrop
+          isOpen={props.isOpen}
+          toggle={props.toggleDish}
+          size="lg"
+        >
+          <MDBModalHeader
+            className="modal-title"
+            toggle={() => props.toggleDish("edit-dish")}
+          >
+            {props.onErr === "" ? (
+              <>EDIT DISH</>
+            ) : (
+              <div className="danger-mssg">{props.onErr}</div>
+            )}
+          </MDBModalHeader>
+          <MDBModalBody>
+            <form>
+              <div className="row">
+                <div className="col-6">
+                  <label>Dish Name: {props.row.dishName}</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    onChange={(e) => setFirstName(e.target.value)}
+                  />
+                </div>
+                <div className="col-6">
+                  <label>Price: {props.row.price}</label>
+                  <input
+                    type="number"
+                    className="form-control"
+                    onChange={(e) => setPhone(e.target.value)}
+                  />
+                </div>
+              </div>
+            </form>
+          </MDBModalBody>
+          <MDBModalFooter>
+            <MDBBtn
+              className="btn btn-secondary btn-sm"
+              onClick={() => props.toggleDish("edit-dish")}
+            >
+              Close
+            </MDBBtn>
+            <MDBBtn
+              className="btn btn-success btn-sm"
+              onClick={() => _handleAddDish("edit-dish")}
+            >
+              Print
+            </MDBBtn>
+            {/* <MDBBtn
+              className="btn btn-success btn-sm"
+              onClick={() => _handleDelete(props.row._id)}
+            >
+              Delete Dish
+            </MDBBtn> */}
+          </MDBModalFooter>
+        </MDBModal>
+      </MDBContainer>
+    );
   }
 }

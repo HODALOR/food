@@ -51,6 +51,46 @@ export default function Tables(props) {
       return user;
     }),
   };
+  const salesData = {
+    columns: [
+      {
+        label: "DISH NAME",
+        field: "dishName",
+        width: 250,
+        attributes: {
+          "aria-controls": "DataTable",
+          "aria-label": "Name",
+        },
+      },
+      {
+        label: "PRICE",
+        field: "price",
+        width: 50,
+      },
+      {
+        label: "USER NAME",
+        field: "userName",
+        width: 50,
+      },
+      {
+        label: "BUYER",
+        field: "buyer",
+        width: 50,
+      },
+      {
+        label: "ACTION",
+        field: "action",
+        width: 50,
+      },
+    ],
+    rows: props.data.map((sale) => {
+      const action = () => {
+        return <i className="fa fa-elipse-v"></i>;
+      };
+      sale.action = action();
+      return sale;
+    }),
+  };
   const dishesData = {
     columns: [
       {
@@ -113,6 +153,20 @@ export default function Tables(props) {
           entries={5}
           pagesAmount={4}
           data={dishesData}
+          searchTop
+          searchBottom={false}
+        />
+      </div>
+    );
+  } else if (props.title === "sales-table") {
+    return (
+      <div className="my-table">
+        <MDBDataTableV5
+          hover
+          entriesOptions={[5, 10, 25]}
+          entries={5}
+          pagesAmount={4}
+          data={salesData}
           searchTop
           searchBottom={false}
         />

@@ -11,16 +11,27 @@ import Dishes from "./main/app/dishes";
 const { remote } = require("electron");
 const dishesInstance = remote.getGlobal("dishStore");
 const usersDbInstance = remote.getGlobal("userStore");
+const salesDbInstance = remote.getGlobal("salesStore");
 
 function App() {
   const [allDishes, setDishes] = useState([]);
   const [users, setUsers] = useState([]);
+  const [sales, setSales] = useState([]);
   const [currentUser, setCurrentUser] = useState({});
 
   useEffect(() => {
     getDishes();
     getUsers();
+    getSales();
   }, []);
+
+  const getSales = () => {
+    salesDbInstance.readAll().then((res) => {
+      if (res) {
+        setSales(res);
+      }
+    });
+  };
 
   const getDishes = () => {
     dishesInstance.readAll().then((res) => {
@@ -43,16 +54,8 @@ function App() {
   };
 
   const _handleAddUser = (data) => {
-    const newUser = users.find((user) => user.password === data.password);
-    if (newUser === null || newUser === undefined) {
-      usersDbInstance.create(data);
-      getUsers();
-    } else {
-      alert(
-        "The password you are trying to useis alredy take, please choose another one!"
-      );
-      return false;
-    }
+    usersDbInstance.create(data);
+    getUsers();
   };
 
   const _deleteUser = (id) => {
@@ -111,7 +114,10 @@ function App() {
               />
             )}
           />
-          <Route path="/Sales" component={Sales} />
+          <Route
+            path="/Sales"
+            render={(props) => <Sales {...props} sales={sales} />}
+          />
           <Route
             path="/Dishes"
             render={(props) => (
