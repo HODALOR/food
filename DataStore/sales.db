@@ -1,13 +1,13 @@
 {"food":"FUFU & LIGHT SOUP","price":"25","quantity":"1","date":"7/6/2021, 3:56:06 PM","_id":"51wybIUEqDhjPQhu","createdAt":{"$$date":1625586966664},"updatedAt":{"$$date":1625586966664}}
 {"food":"FUFU & LIGHT SOUP","price":"100","quantity":"4","date":"7/6/2021, 5:11:57 PM","userName":"prince","_id":"5jC1SSiOalKmJYvM","createdAt":{"$$date":1625591517603},"updatedAt":{"$$date":1625591517603}}
 {"food":"dhfcgdsnm","price":"12","quantity":"4","date":"7/6/2021, 5:10:53 PM","userName":"prince","_id":"BZvYHNYosH69E1HI","createdAt":{"$$date":1625591454536},"updatedAt":{"$$date":1625591454536}}
+{"food":"edkjn","price":"4","quantity":"1","date":"7/7/2021, 3:50:55 PM","userName":"alfuty09","_id":"L9JA11xoSi0G5EGq","createdAt":{"$$date":1625673055389},"updatedAt":{"$$date":1625673055389}}
 {"food":"sxfxd","price":"8","quantity":"2","date":"7/6/2021, 4:03:24 PM","userName":"alfuty09","_id":"RB8DyDdt4m2EAmhy","createdAt":{"$$date":1625587404568},"updatedAt":{"$$date":1625587404568}}
 {"food":"gf","price":"27","quantity":"3","date":"7/6/2021, 4:24:31 PM","userName":"alfuty09","_id":"VusxEm8zOxiUI1l4","createdAt":{"$$date":1625588671559},"updatedAt":{"$$date":1625588671559}}
+{"food":"y6345376","price":"2175","quantity":"5","date":"7/7/2021, 3:45:15 PM","userName":"alfuty09","_id":"bP2Cz6xwQb9e8eHY","createdAt":{"$$date":1625672715537},"updatedAt":{"$$date":1625672715537}}
+{"food":"bghvshdwas","price":"55","quantity":"1","date":"7/7/2021, 3:50:55 PM","userName":"alfuty09","_id":"fu1bpjQvA0Ydqiq0","createdAt":{"$$date":1625673055400},"updatedAt":{"$$date":1625673055400}}
+{"food":"bvdf","price":"8","quantity":"2","date":"7/7/2021, 3:50:55 PM","userName":"alfuty09","_id":"igZNpj96BTyPEyek","createdAt":{"$$date":1625673055374},"updatedAt":{"$$date":1625673055374}}
+{"food":"dhfcgdsnm","price":"3","quantity":"1","date":"7/7/2021, 3:45:15 PM","userName":"alfuty09","_id":"os2hKGt9NJnoPg9D","createdAt":{"$$date":1625672715523},"updatedAt":{"$$date":1625672715523}}
 {"food":"gf","price":"36","quantity":"4","date":"7/6/2021, 5:11:57 PM","userName":"prince","_id":"s1OmAoTkJiRABrgG","createdAt":{"$$date":1625591517615},"updatedAt":{"$$date":1625591517615}}
 {"food":"TZ","price":"1368","quantity":"3","date":"7/6/2021, 3:56:06 PM","_id":"uSB3030azbm01B9e","createdAt":{"$$date":1625586966673},"updatedAt":{"$$date":1625586966673}}
 {"food":"gf","price":"27","quantity":"3","date":"7/6/2021, 4:03:24 PM","userName":"alfuty09","_id":"xjqJwycyV2xGC5Tj","createdAt":{"$$date":1625587404557},"updatedAt":{"$$date":1625587404557}}
-{"food":"dhfcgdsnm","price":"3","quantity":"1","date":"7/7/2021, 3:45:15 PM","userName":"alfuty09","_id":"os2hKGt9NJnoPg9D","createdAt":{"$$date":1625672715523},"updatedAt":{"$$date":1625672715523}}
-{"food":"y6345376","price":"2175","quantity":"5","date":"7/7/2021, 3:45:15 PM","userName":"alfuty09","_id":"bP2Cz6xwQb9e8eHY","createdAt":{"$$date":1625672715537},"updatedAt":{"$$date":1625672715537}}
-{"food":"bvdf","price":"8","quantity":"2","date":"7/7/2021, 3:50:55 PM","userName":"alfuty09","_id":"igZNpj96BTyPEyek","createdAt":{"$$date":1625673055374},"updatedAt":{"$$date":1625673055374}}
-{"food":"edkjn","price":"4","quantity":"1","date":"7/7/2021, 3:50:55 PM","userName":"alfuty09","_id":"L9JA11xoSi0G5EGq","createdAt":{"$$date":1625673055389},"updatedAt":{"$$date":1625673055389}}
-{"food":"bghvshdwas","price":"55","quantity":"1","date":"7/7/2021, 3:50:55 PM","userName":"alfuty09","_id":"fu1bpjQvA0Ydqiq0","createdAt":{"$$date":1625673055400},"updatedAt":{"$$date":1625673055400}}

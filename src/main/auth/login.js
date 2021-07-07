@@ -9,18 +9,28 @@ function Login(props) {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [loginType, setLoginType] = useState(false);
+  const [errMess, setErr] = useState("");
 
   const _handleLogin = () => {
     if (userName === "" || password === "") {
-      alert("Please both fileds are required!");
+      setErr("Please both fileds are required!");
+      setTimeout(() => {
+        setErr("");
+      }, 3000);
       return false;
     } else if (password.length < 6) {
-      alert("Please password is too short!");
+      setErr("Please password is too short!");
+      setTimeout(() => {
+        setErr("");
+      }, 3000);
       return false;
     } else {
       usersInstance.readUser(userName).then((user) => {
         if (user === null) {
-          alert("User does not exist, please check user name or password");
+          setErr("User does not exist, please check user name or password!");
+          setTimeout(() => {
+            setErr("");
+          }, 3000);
           return false;
         } else {
           localStorage.setItem("user", JSON.stringify(user));
@@ -34,19 +44,31 @@ function Login(props) {
 
   const _handleLoginAdmin = () => {
     if (password === "") {
-      alert("Password cannot be empty");
+      setErr("Password cannot be empty!");
+      setTimeout(() => {
+        setErr("");
+      }, 3000);
       return false;
     } else if (password.length < 6) {
-      alert("Password is too short!");
+      setErr("Password is too short!");
+      setTimeout(() => {
+        setErr("");
+      }, 3000);
       return false;
     } else {
       usersInstance.readAdmin(password).then((admin) => {
         if (admin === null) {
-          alert("Admin does not exist, check password!");
+          setErr("Admin does not exist, check password!");
+          setTimeout(() => {
+            setErr("");
+          }, 3000);
           return false;
         } else {
           if (admin.role !== "Admin") {
-            alert("You are not authorized to view this page!");
+            setErr("You are not authorized to view this page!");
+            setTimeout(() => {
+              setErr("");
+            }, 3000);
             return false;
           } else {
             props.history.push("/Accounts");
@@ -76,13 +98,17 @@ function Login(props) {
                 onClick={() => Accounts()}
               ></i>
             </div>
-
             <div>
               <img
                 src="/assets/logo1.png"
                 style={{ width: "8rem", height: "6rem" }}
               />
             </div>
+            {errMess === "" ? (
+              ""
+            ) : (
+              <div className="log-err-mess">{errMess}</div>
+            )}
             <form className="my-form">
               <p>
                 <label>Password</label>
@@ -140,6 +166,11 @@ function Login(props) {
                 style={{ width: "8rem", height: "6rem" }}
               />
             </div>
+            {errMess === "" ? (
+              ""
+            ) : (
+              <div className="log-err-mess">{errMess}</div>
+            )}
             <form className="my-form">
               <p>
                 <label>User Name</label>
