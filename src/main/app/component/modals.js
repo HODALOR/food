@@ -468,6 +468,7 @@ export default function Modals(props) {
             <MDBBtn
               className="btn btn-success btn-sm"
               onClick={() => props.onBuy()}
+              style={{paddding:"2rem", backgroupColor:"red"}}
             >
               Buy
             </MDBBtn>

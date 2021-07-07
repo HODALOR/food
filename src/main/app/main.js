@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Header from "./component/header";
 import Modals from "./component/modals";
+import Print from "./component/print";
 import "./main.css";
 
 function Main(props) {
@@ -9,6 +10,7 @@ function Main(props) {
   const [err, setErr] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const [qt, setQt] = useState("");
+  const [print, setPrint] = useState(false);
   const data = props.dishes;
   const getPrice = () => {
     const selctDish = data.find((dish) => dish.dishName === slectedDish);
@@ -71,6 +73,7 @@ function Main(props) {
   };
   const _handleBuy = () => {
     props.onAdd(cart);
+    setPrint(true);
     setCart([]);
     _toggleModal();
   };
@@ -120,7 +123,7 @@ function Main(props) {
             <div className="prices">GHC {getPrice()}</div>
             <input
               className="quantity"
-              placeholder="# of parckages"
+              placeholder="# of packages"
               type="number"
               onChange={(e) => setQt(e.target.value)}
             />
@@ -144,6 +147,7 @@ function Main(props) {
             onClear={_handleClear}
             onRemove={_handleRemove}
           />
+          <Print data={cart} onPrint={print} />
         </div>
       </div>
     </div>

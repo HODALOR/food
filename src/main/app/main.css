@@ -305,3 +305,49 @@ table {
   margin-left: 40px;
   text-align: center;
 }
+
+#printme {
+  display: none;
+}
+
+@media print {
+  #no-printme {
+    display: none;
+  }
+  #printme {
+    width: 60%;
+    height: 60%;
+    box-shadow: inset 0 0 0 1000px #000;
+  }
+}
+
+.print-view {
+  border: dotted black 1px;
+  width: 30%;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.reciept-title {
+  border-bottom: black solid 1px;
+  margin-bottom: 3px;
+  font-style: italic;
+}
+
+.reciept-body {
+  display: flex;
+  width: 100%;
+  margin-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.reciept-dish {
+  width: 60%;
+  font-style: italic;
+}
+
+.reciept-price {
+  width: 30%;
+  font-style: italic;
+}
