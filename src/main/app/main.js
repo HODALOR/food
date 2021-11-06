@@ -110,8 +110,11 @@ function Main(props) {
           }}
         >
           <div className="res-place">
-            <h1>RESTAURANT NAME</h1>
+            <h1 style={{fontFamily:"agency FB"}}>KEGALI </h1>
             {_showCart()}
+          </div>
+          <div>
+            <h3 style={{textAlign:"left", marginLeft:"15rem"}}>HOTEL</h3>
           </div>
           <div className="select">
             <select onChange={(e) => setDish(e.target.value)}>

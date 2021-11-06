@@ -51,6 +51,7 @@ function Header(props) {
             src="/assets/logo1.png"
             style={{ width: "60px", height: "60px" }}
           />
+          {/* <p style={{textAlign: "left"}}>KIGALI HOTEL</p> */}
           <Link to="/" className="right">
             <i class="fa fa-lock" style={{ float: "flex-end" }}></i>
           </Link>
