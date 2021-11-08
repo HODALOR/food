@@ -6,20 +6,44 @@ import "./main.css";
 
 function Main(props) {
   const [slectedDish, setDish] = useState("");
+  const [slectedDrink, setDrink] = useState("");
+  const [slectedBv, setBv] = useState("");
   const [cart, setCart] = useState([]);
   const [err, setErr] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const [qt, setQt] = useState("");
+  const [lqQt, setLqQt] = useState("");
+  const [bvQt, setBvQt] = useState("");
   const [print, setPrint] = useState(false);
   const data = props.dishes;
-  const getPrice = () => {
-    const selctDish = data.find((dish) => dish.dishName === slectedDish);
-    if (selctDish) {
-      return selctDish.price;
+  const beverages = props.beverages;
+  const liqour = props.liquor;
+
+  const getPrice = check => {
+    if (check === "dish") {
+      const selctDish = data.find(dish => dish.dishName === slectedDish);
+      if (selctDish) {
+        return selctDish.price;
+      } else {
+        return "";
+      }
+    } else if (check === "drink") {
+      const selctDrink = liqour.find(lq => lq.liqureName === slectedDrink);
+      if (selctDrink) {
+        return selctDrink.price;
+      } else {
+        return "";
+      }
     } else {
-      return "";
+      const selctBev = beverages.find(bv => bv.beverageName === slectedBv);
+      if (selctBev) {
+        return selctBev.price;
+      } else {
+        return "";
+      }
     }
   };
+
   const _showCart = () => {
     if (cart.length < 10) {
       return (
@@ -36,7 +60,7 @@ function Main(props) {
     }
   };
   const _handleAddToCart = () => {
-    const dish = data.find((d) => d.dishName === slectedDish);
+    const dish = data.find(d => d.dishName === slectedDish);
     if (qt === "" || qt === "0") {
       setErr("Quantity cannot be 0!");
       setTimeout(() => {
@@ -58,6 +82,52 @@ function Main(props) {
       }
     }
   };
+  const _handleAddDrinkToCart = () => {
+    const drink = liqour.find(lq => lq.liqureName === slectedDrink);
+    if (lqQt === "" || lqQt === "0") {
+      setErr("Liquor Quantity cannot be 0!");
+      setTimeout(() => {
+        setErr("");
+        setLqQt("");
+      }, 3000);
+    } else {
+      if (slectedDrink !== "") {
+        drink.quantity = lqQt;
+        let newCart = [...cart, drink];
+        setCart(newCart);
+        setDrink("");
+      } else {
+        setErr("Please select a drink first!");
+        setTimeout(() => {
+          setErr("");
+          setLqQt("");
+        }, 3000);
+      }
+    }
+  };
+  const _handleAddBevToCart = () => {
+    const bv = beverages.find(bev => bev.beverageName === slectedBv);
+    if (bvQt === "" || bvQt === "0") {
+      setErr("Bevrage Quantity cannot be 0!");
+      setTimeout(() => {
+        setErr("");
+        setBvQt("");
+      }, 3000);
+    } else {
+      if (slectedBv !== "") {
+        bv.quantity = bvQt;
+        let newCart = [...cart, bv];
+        setCart(newCart);
+        setBv("");
+      } else {
+        setErr("Please select a beverage first!");
+        setTimeout(() => {
+          setErr("");
+          setBvQt("");
+        }, 3000);
+      }
+    }
+  };
   const _openModal = () => {
     if (cart.length === 0) {
       setErr("Cart is empty!");
@@ -73,7 +143,7 @@ function Main(props) {
   };
   const _handleBuy = () => {
     props.onAdd(cart);
-    setPrint(true);
+    // setPrint(true);
     setCart([]);
     _toggleModal();
   };
@@ -81,9 +151,9 @@ function Main(props) {
     setCart([]);
     _toggleModal();
   };
-  const _handleRemove = (id) => {
+  const _handleRemove = id => {
     const newCart = [];
-    cart.forEach((dish) => {
+    cart.forEach(dish => {
       if (dish._id === id) {
         cart.slice(dish);
       } else {
@@ -106,29 +176,28 @@ function Main(props) {
             backgroundRepeat: "no-repeat",
             backgroundPosition: "center",
             backgroundSize: "cover",
-            borderRadius: "10px",
+            borderRadius: "10px"
           }}
         >
           <div className="res-place">
-            <h1 style={{fontFamily:"agency FB"}}>KEGALI </h1>
+            <h1 style={{ fontFamily: "agency FB" }}>
+              <strong>KEGALI</strong> <small>HOTEL</small>{" "}
+            </h1>
             {_showCart()}
           </div>
-          <div>
-            <h3 style={{textAlign:"left", marginLeft:"15rem"}}>HOTEL</h3>
-          </div>
           <div className="select">
-            <select onChange={(e) => setDish(e.target.value)}>
+            <select onChange={e => setDish(e.target.value)}>
               <option>Select dish...</option>
-              {data.map((dish) => {
+              {data.map(dish => {
                 return <option>{dish.dishName}</option>;
               })}
             </select>
-            <div className="prices">GHC {getPrice()}</div>
+            <div className="prices">GHC {getPrice("dish")}</div>
             <input
               className="quantity"
               placeholder="# of packages"
               type="number"
-              onChange={(e) => setQt(e.target.value)}
+              onChange={e => setQt(e.target.value)}
             />
             <button
               type="button"
@@ -137,6 +206,58 @@ function Main(props) {
             >
               <i className="fa fa-cart-plus"></i> Add to Cart
             </button>
+          </div>
+          <div className="sub-select">
+            <div className="sub">
+              <select
+                className="my-select"
+                onChange={e => setDrink(e.target.value)}
+              >
+                <option>Select drink...</option>
+                {liqour.map(lq => {
+                  return <option>{lq.liqureName}</option>;
+                })}
+              </select>
+              <div className="sup-prices">{getPrice("drink")}</div>
+              <input
+                className="sub-quantity"
+                placeholder="#"
+                type="number"
+                onChange={e => setLqQt(e.target.value)}
+              />
+              <button
+                type="button"
+                className="sub-add"
+                onClick={() => _handleAddDrinkToCart()}
+              >
+                <i className="fa fa-cart-plus"></i>
+              </button>
+            </div>
+            <div className="sub">
+              <select
+                className="my-select"
+                onChange={e => setBv(e.target.value)}
+              >
+                <option>Select beverage...</option>
+                {beverages.map(bv => {
+                  return <option>{bv.beverageName}</option>;
+                })}
+              </select>
+              <div className="sup-prices">{getPrice("bv")}</div>
+              <input
+                className="sub-quantity"
+                placeholder="#"
+                type="number"
+                onChange={e => setBvQt(e.target.value)}
+              />
+              <button
+                type="button"
+                className="sub-add"
+                onClick={() => _handleAddBevToCart()}
+              >
+                <i className="fa fa-cart-plus"></i>
+              </button>
+            </div>
           </div>
           <div className="err-div">
             {err === "" ? "" : <div className="errMessage">{err}</div>}

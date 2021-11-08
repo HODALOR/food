@@ -9,17 +9,33 @@ function Dishes(props) {
   const [title, setTitle] = useState("add-dish");
   const [errMessage, setErrMessage] = useState("");
   const [row, setRow] = useState({});
-  const toggleDish = (check) => {
+  const [tableTitile, setTableTitle] = useState("dishes-table");
+  const [tab1, setTab1] = useState("table-select-active");
+  const [tab2, setTab2] = useState("table-select");
+  const [tab3, setTab3] = useState("table-select");
+  const toggleDish = check => {
     if (check === "add-dish") {
       setTitle(check);
       setIsOpen(!isOpen);
-    } else {
+    } else if (check === "add-liquor") {
       setTitle(check);
+      setIsOpen(!isOpen);
+    } else if (check === "add-beverage") {
+      setTitle(check);
+      setIsOpen(!isOpen);
+    } else if (check === "edit-dish") {
+      setTitle("edit-dish");
+      setIsOpen(!isOpen);
+    } else if (check === "edit-liquor") {
+      setTitle("edit-liquor");
+      setIsOpen(!isOpen);
+    } else if (check === "edit-beverage") {
+      setTitle("edit-beverage");
       setIsOpen(!isOpen);
     }
   };
-  const _handleAdd = (data) => {
-    let { dishName, price } = data;
+  const _handleAdd = data => {
+    let { dishName, price, type } = data;
     if (dishName === "" || price === "") {
       setErrMessage("All Fields are required!");
       setTimeout(() => {
@@ -30,20 +46,29 @@ function Dishes(props) {
       const storeData = {
         dishName,
         price,
+        type
       };
       props.addDish(storeData);
-      toggleDish("add-dish");
+      toggleDish(type);
     }
   };
-  const _handleRowClick = (data) => {
-    setRow(data);
+  const _handleRowClick = data => {
+    if (data.hasOwnProperty("dishName")) {
+      setRow(data);
+      toggleDish("edit-dish");
+    } else if (data.hasOwnProperty("beverageName")) {
+      setRow(data);
+      toggleDish("edit-beverage");
+    } else {
+      setRow(data);
+      toggleDish("edit-liquor");
+    }
+  };
+  const _delete = data => {
+    props.onDelete(data);
     toggleDish("edit-dish");
   };
-  const _delete = (id) => {
-    props.onDelete(id);
-    toggleDish("edit-dish");
-  };
-  const _handleEdit = (data) => {
+  const _handleEdit = data => {
     let { dishName, _id, price } = data;
     if (dishName === "" || _id === "" || price === "") {
       setErrMessage("All Fields are required!");
@@ -56,26 +81,99 @@ function Dishes(props) {
       toggleDish("edit-dish");
     }
   };
+
+  const renderTable = () => {
+    if (tableTitile === "dishes-table") {
+      return (
+        <Tables
+          data={props.dishes}
+          title={tableTitile}
+          onRowClicked={_handleRowClick}
+        />
+      );
+    } else if (tableTitile === "liquor-table") {
+      return (
+        <Tables
+          data={props.liquor}
+          title={tableTitile}
+          onRowClicked={_handleRowClick}
+        />
+      );
+    } else {
+      return (
+        <Tables
+          data={props.beverages}
+          title={tableTitile}
+          onRowClicked={_handleRowClick}
+        />
+      );
+    }
+  };
   return (
     <div>
       <Header title="admin" />
       <div className="accounts">
         <div className="my-card">
-          <div className="table-title">Dishes List</div>
+          <div className="table-title">Menu Page</div>
+          <div
+            className={tab1}
+            role="button"
+            type="button"
+            onClick={() => {
+              setTab1("table-select-active");
+              setTab2("table-select");
+              setTab3("table-select");
+              setTableTitle("dishes-table");
+            }}
+          >
+            Dishes Table
+          </div>
+          <div
+            className={tab2}
+            role="button"
+            type="button"
+            onClick={() => {
+              setTab1("table-select");
+              setTab2("table-select-active");
+              setTab3("table-select");
+              setTableTitle("liquor-table");
+            }}
+          >
+            Liquor Table
+          </div>
+          <div
+            className={tab3}
+            role="button"
+            type="button"
+            onClick={() => {
+              setTab1("table-select");
+              setTab2("table-select");
+              setTab3("table-select-active");
+              setTableTitle("beverages-table");
+            }}
+          >
+            Beverages Table
+          </div>
           <button
             className="btn btn-primary btn-sm create-btn"
             onClick={() => toggleDish("add-dish")}
           >
             Add Dish
           </button>
+          <button
+            className="btn btn-warning btn-sm create-btn"
+            onClick={() => toggleDish("add-liquor")}
+          >
+            Add Liquor
+          </button>
+          <button
+            className="btn btn-success btn-sm create-btn"
+            onClick={() => toggleDish("add-beverage")}
+          >
+            Add Beverage
+          </button>
           <div>
-            <div className="my-card-body">
-              <Tables
-                data={props.dishes}
-                title="dishes-table"
-                onRowClicked={_handleRowClick}
-              />
-            </div>
+            <div className="my-card-body">{renderTable()}</div>
           </div>
           <Modals
             title={title}

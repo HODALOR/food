@@ -2,7 +2,6 @@
 {"dishName":"Grilled Tomato","price":"2.99","_id":"19Cf9FpxJvEo8cuV","createdAt":{"$$date":1625676260528},"updatedAt":{"$$date":1636112402261}}
 {"dishName":"Baked Beans","price":"5.9","_id":"2JIyWkaP1O6NoauC","createdAt":{"$$date":1625676016899},"updatedAt":{"$$date":1636112552576}}
 {"dishName":"Avocado salad","price":"44.99","_id":"3iLIedimXZLNieuw","createdAt":{"$$date":1636116194494},"updatedAt":{"$$date":1636116194494}}
-{"dishName":"Samosa","price":"30.99","_id":"4kXEacogHY2ekS6P","createdAt":{"$$date":1636115789186},"updatedAt":{"$$date":1636115789186}}
 {"dishName":"chicken & Beacon Salad","price":"44.99","_id":"HTE8ZFZZsAFjXKlb","createdAt":{"$$date":1636116476070},"updatedAt":{"$$date":1636116476070}}
 {"dishName":"Potato Chips ","price":"14.99","_id":"HXxHj9YGLisP1YF3","createdAt":{"$$date":1636115153942},"updatedAt":{"$$date":1636115153942}}
 {"dishName":"Kegali Ghana Salad","price":"44.99","_id":"JvMu4KP6Tl6fpMVd","createdAt":{"$$date":1636116590652},"updatedAt":{"$$date":1636116590652}}
@@ -14,6 +13,7 @@
 {"dishName":"Tuna salad","price":"44.99","_id":"TDsQetisvqFRXf06","createdAt":{"$$date":1636116624011},"updatedAt":{"$$date":1636116624011}}
 {"dishName":"Friend Plantain ","price":"14.99","_id":"UHpI1zWIrH7plNPF","createdAt":{"$$date":1636115251101},"updatedAt":{"$$date":1636115251101}}
 {"dishName":"Tuna & Potato Salad ","price":"54.99","_id":"X82IHVQ4DHOy6DcO","createdAt":{"$$date":1636116672675},"updatedAt":{"$$date":1636116672675}}
+{"dishName":"dish 1","price":"50","_id":"YCKyMyNbioulmH1M","createdAt":{"$$date":1636380330625},"updatedAt":{"$$date":1636380330625}}
 {"dishName":"Eggs(Fried / Scrambled)","price":"5.99","_id":"hpWFHp8PeQnXczC3","createdAt":{"$$date":1625676544250},"updatedAt":{"$$date":1636114593352}}
 {"dishName":"Beacon","price":"9.99","_id":"kZT6anII8GCWrG4X","createdAt":{"$$date":1625676315244},"updatedAt":{"$$date":1636114717236}}
 {"dishName":"Honey & Mustard Grilled / Fried Turkey","price":"44.99","_id":"lPuf78s6LautYIal","createdAt":{"$$date":1636116123476},"updatedAt":{"$$date":1636116123476}}
@@ -23,3 +23,4 @@
 {"dishName":"Spring Rolls ","price":"30.99","_id":"vFbZ10s0GaKRQ0y8","createdAt":{"$$date":1636115855106},"updatedAt":{"$$date":1636115855106}}
 {"dishName":"Sausage(Beaf / Port / Chicken / Beans)","price":"14.99","_id":"xZn05B3eBqZ7uo8Z","createdAt":{"$$date":1625676126124},"updatedAt":{"$$date":1636116380686}}
 {"dishName":"Potato Waffles","price":"14.99","_id":"zLQ0fW4PWCyDuNDa","createdAt":{"$$date":1625676379295},"updatedAt":{"$$date":1636115072047}}
+{"$$deleted":true,"_id":"YCKyMyNbioulmH1M"}

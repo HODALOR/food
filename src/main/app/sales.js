@@ -27,7 +27,7 @@ function Sales(props) {
       <Header title="admin" />
       <div className="accounts">
         <div className="my-card">
-          <div className="table-title">Dishes List</div>
+          <div className="table-title">Sales List</div>
           <div>
             <div className="my-card-body">
               <Tables

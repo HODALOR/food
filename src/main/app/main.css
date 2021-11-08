@@ -21,20 +21,43 @@ h1 {
 }
 
 .select {
-  height: 55vh;
+  height: 30vh;
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
 select {
   height: 3rem;
   width: 50%;
   border-radius: 0.5rem;
   padding-left: 1rem;
 }
+
 select:hover {
   cursor: pointer;
 }
+
+.sub-select {
+  height: 10vh;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding-left: 2rem;
+  width: 100%;
+}
+
+.sub {
+  display: flex
+}
+
+.my-select {
+  height: 3rem;
+  width: 50%;
+  border-radius: 0.5rem;
+  padding-left: 1rem;
+}
+
 .prices {
   height: 3rem;
   border-radius: 0.5rem;
@@ -43,6 +66,19 @@ select:hover {
   border: 1px;
   background-color: white;
   width: 7rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sup-prices {
+  height: 3rem;
+  border-radius: 0.5rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  border: 1px;
+  background-color: white;
+  width: 15%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -58,7 +94,20 @@ select:hover {
   width: 8rem;
 }
 
+.sub-add {
+  height: 3rem;
+  border-radius: 0.5rem;
+  margin-right: 0.5rem;
+  border: 1px;
+  background-color: orange;
+  width:  13%;
+}
+
 .add:hover {
+  cursor: pointer;
+}
+
+.sub-add:hover {
   cursor: pointer;
 }
 
@@ -177,6 +226,24 @@ table {
   font-weight: bold;
 }
 
+.table-select {
+  float: left;
+  margin-left: 15px;
+  border-right: solid 1px black;
+  border-bottom: solid 1px black;
+  padding-right: 5px;
+  font-size: 15px;
+}
+
+.table-select-active {
+  float: left;
+  margin-left: 15px;
+  color: white;
+  background-color: rgb(93, 114, 93);
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
 .modal-title {
   color: black;
 }
@@ -243,6 +310,16 @@ table {
   border: 1px;
   background-color: white;
   width: 7rem;
+  text-align: center;
+}
+
+.sub-quantity {
+  height: 3rem;
+  border-radius: 0.5rem;
+  margin-right: 0.5rem;
+  border: 1px;
+  background-color: white;
+  width: 10%;
   text-align: center;
 }
 

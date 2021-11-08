@@ -7,7 +7,7 @@ import {
   MDBModal,
   MDBModalBody,
   MDBModalHeader,
-  MDBModalFooter,
+  MDBModalFooter
 } from "mdbreact";
 import { useState } from "react";
 
@@ -21,7 +21,7 @@ export default function Modals(props) {
   const [role, setRole] = useState("");
   const [err, setErr] = useState(false);
 
-  const _handleAddUser = (check) => {
+  const _handleAddUser = check => {
     if (check === "add") {
       const data = {
         firstName,
@@ -30,7 +30,7 @@ export default function Modals(props) {
         password,
         repeatPass,
         phone,
-        role,
+        role
       };
       props.onAdd(data);
     } else {
@@ -41,17 +41,32 @@ export default function Modals(props) {
         password,
         phone,
         role,
-        _id: props.row._id,
+        _id: props.row._id
       };
       props.onEdit(data);
     }
   };
 
-  const _handleAddDish = (check) => {
+  const _handleAddDish = check => {
     if (check === "add-dish") {
       const data = {
         dishName: firstName,
         price: phone,
+        type: check
+      };
+      props.onAdd(data);
+    } else if (check === "add-liquor") {
+      const data = {
+        dishName: firstName,
+        price: phone,
+        type: check
+      };
+      props.onAdd(data);
+    } else if (check === "add-beverage") {
+      const data = {
+        dishName: firstName,
+        price: phone,
+        type: check
       };
       props.onAdd(data);
     } else {
@@ -59,31 +74,32 @@ export default function Modals(props) {
         dishName: firstName,
         price: phone,
         _id: props.row._id,
+        type: check
       };
       props.onEdit(data);
     }
   };
 
-  const _handleDelete = (id) => {
-    props.onDelete(id);
+  const _handleDelete = data => {
+    props.onDelete(data);
   };
 
-  const _dishPrice = (dish) => {
+  const _dishPrice = dish => {
     const price = parseInt(dish.price) * parseInt(dish.quantity);
     return price;
   };
 
-  const _totalQuantity = (data) => {
+  const _totalQuantity = data => {
     let qt = 0;
-    data.forEach((dish) => {
+    data.forEach(dish => {
       qt += parseInt(dish.quantity);
     });
     return qt;
   };
 
-  const _totalPrice = (data) => {
+  const _totalPrice = data => {
     let tprice = 0;
-    data.forEach((dish) => {
+    data.forEach(dish => {
       let price = parseInt(dish.price) * parseInt(dish.quantity);
       tprice += price;
     });
@@ -117,7 +133,7 @@ export default function Modals(props) {
                   <input
                     type="text"
                     className="form-control"
-                    onChange={(e) => setFirstName(e.target.value)}
+                    onChange={e => setFirstName(e.target.value)}
                   />
                 </div>
                 <div className="col-6">
@@ -125,7 +141,7 @@ export default function Modals(props) {
                   <input
                     type="text"
                     className="form-control"
-                    onChange={(e) => setLastName(e.target.value)}
+                    onChange={e => setLastName(e.target.value)}
                   />
                 </div>
                 <div className="col-6">
@@ -133,7 +149,7 @@ export default function Modals(props) {
                   <input
                     type="text"
                     className="form-control"
-                    onChange={(e) => setUserName(e.target.value)}
+                    onChange={e => setUserName(e.target.value)}
                   />
                 </div>
                 <div className="col-6">
@@ -141,7 +157,7 @@ export default function Modals(props) {
                   <input
                     type="number"
                     className="form-control"
-                    onChange={(e) => setPhone(e.target.value)}
+                    onChange={e => setPhone(e.target.value)}
                   />
                 </div>
                 <div className="col-6">
@@ -149,7 +165,7 @@ export default function Modals(props) {
                   <input
                     type="password"
                     className="form-control"
-                    onChange={(e) => setPassword(e.target.value)}
+                    onChange={e => setPassword(e.target.value)}
                   />
                 </div>
                 <div className="col-6">
@@ -157,14 +173,14 @@ export default function Modals(props) {
                   <input
                     type="password"
                     className="form-control"
-                    onChange={(e) => setRepPass(e.target.value)}
+                    onChange={e => setRepPass(e.target.value)}
                   />
                 </div>
                 <div className="col-12">
                   <label>Select Role</label>
                   <select
                     className="form-control"
-                    onChange={(e) => setRole(e.target.value)}
+                    onChange={e => setRole(e.target.value)}
                   >
                     <option>Select Role</option>
                     <option>Admin</option>
@@ -218,7 +234,7 @@ export default function Modals(props) {
                   <input
                     type="text"
                     className="form-control"
-                    onChange={(e) => setFirstName(e.target.value)}
+                    onChange={e => setFirstName(e.target.value)}
                   />
                 </div>
                 <div className="col-6">
@@ -226,7 +242,7 @@ export default function Modals(props) {
                   <input
                     type="text"
                     className="form-control"
-                    onChange={(e) => setLastName(e.target.value)}
+                    onChange={e => setLastName(e.target.value)}
                   />
                 </div>
                 <div className="col-6">
@@ -234,7 +250,7 @@ export default function Modals(props) {
                   <input
                     type="text"
                     className="form-control"
-                    onChange={(e) => setUserName(e.target.value)}
+                    onChange={e => setUserName(e.target.value)}
                   />
                 </div>
                 <div className="col-6">
@@ -242,7 +258,7 @@ export default function Modals(props) {
                   <input
                     type="number"
                     className="form-control"
-                    onChange={(e) => setPhone(e.target.value)}
+                    onChange={e => setPhone(e.target.value)}
                   />
                 </div>
                 <div className="col-6">
@@ -250,14 +266,14 @@ export default function Modals(props) {
                   <input
                     type="text"
                     className="form-control"
-                    onChange={(e) => setPassword(e.target.value)}
+                    onChange={e => setPassword(e.target.value)}
                   />
                 </div>
                 <div className="col-6">
                   <label>Select Role: {props.row.role}</label>
                   <select
                     className="form-control"
-                    onChange={(e) => setRole(e.target.value)}
+                    onChange={e => setRole(e.target.value)}
                   >
                     <option>Select Role</option>
                     <option>Admin</option>
@@ -317,7 +333,7 @@ export default function Modals(props) {
                   <input
                     type="text"
                     className="form-control"
-                    onChange={(e) => setFirstName(e.target.value)}
+                    onChange={e => setFirstName(e.target.value)}
                   />
                 </div>
                 <div className="col-6">
@@ -325,7 +341,7 @@ export default function Modals(props) {
                   <input
                     type="number"
                     className="form-control"
-                    onChange={(e) => setPhone(e.target.value)}
+                    onChange={e => setPhone(e.target.value)}
                   />
                 </div>
               </div>
@@ -348,7 +364,11 @@ export default function Modals(props) {
         </MDBModal>
       </MDBContainer>
     );
-  } else if (props.title === "edit-dish") {
+  } else if (
+    props.title === "edit-dish" ||
+    props.title === "edit-liquor" ||
+    props.title === "edit-beverage"
+  ) {
     return (
       <MDBContainer>
         <MDBModal
@@ -362,7 +382,7 @@ export default function Modals(props) {
             toggle={() => props.toggleDish("edit-dish")}
           >
             {props.onErr === "" ? (
-              <>EDIT DISH</>
+              <>EDIT SELECTION</>
             ) : (
               <div className="danger-mssg">{props.onErr}</div>
             )}
@@ -371,11 +391,16 @@ export default function Modals(props) {
             <form>
               <div className="row">
                 <div className="col-6">
-                  <label>Dish Name: {props.row.dishName}</label>
+                  <label>
+                    Name:{" "}
+                    {props.row.dishName ||
+                      props.row.liqureName ||
+                      props.row.beverageName}
+                  </label>
                   <input
                     type="text"
                     className="form-control"
-                    onChange={(e) => setFirstName(e.target.value)}
+                    onChange={e => setFirstName(e.target.value)}
                   />
                 </div>
                 <div className="col-6">
@@ -383,7 +408,7 @@ export default function Modals(props) {
                   <input
                     type="number"
                     className="form-control"
-                    onChange={(e) => setPhone(e.target.value)}
+                    onChange={e => setPhone(e.target.value)}
                   />
                 </div>
               </div>
@@ -398,15 +423,43 @@ export default function Modals(props) {
             </MDBBtn>
             <MDBBtn
               className="btn btn-success btn-sm"
-              onClick={() => _handleAddDish("edit-dish")}
+              onClick={() => {
+                if (props.title === "edit-dish") {
+                  _handleAddDish("edit-dish");
+                } else if (props.title === "edit-beverage") {
+                  _handleAddDish("edit-beverage");
+                } else {
+                  _handleAddDish("edit-liquor");
+                }
+              }}
             >
               Save changes
             </MDBBtn>
             <MDBBtn
               className="btn btn-success btn-sm"
-              onClick={() => _handleDelete(props.row._id)}
+              onClick={() => {
+                if (props.title === "edit-dish") {
+                  const data = {
+                    _id: props.row._id,
+                    type: "delete-dish"
+                  };
+                  _handleDelete(data);
+                } else if (props.title === "edit-beverage") {
+                  const data = {
+                    _id: props.row._id,
+                    type: "delete-beverage"
+                  };
+                  _handleDelete(data);
+                } else {
+                  const data = {
+                    _id: props.row._id,
+                    type: "delete-liquor"
+                  };
+                  _handleDelete(data);
+                }
+              }}
             >
-              Delete Dish
+              Delete Item
             </MDBBtn>
           </MDBModalFooter>
         </MDBModal>
@@ -430,22 +483,24 @@ export default function Modals(props) {
           </MDBModalHeader>
           <MDBModalBody>
             <div className="car-header">
-              <div className="cart-name">Dish Name</div>
+              <div className="cart-name">Item Name</div>
               <div className="cart-number">Number Of Parcks</div>
               <div className="cart-price">Price(GHC)</div>
               <div className="cart-remove-h">Remove</div>
             </div>
-            {props.data.map((dish) => {
+            {props.data.map(item => {
               return (
                 <div className="cart-body">
-                  <div className="cart-name">{dish.dishName}</div>
-                  <div className="cart-number">{dish.quantity}</div>
-                  <div className="cart-price">{_dishPrice(dish)}</div>
+                  <div className="cart-name">
+                    {item.dishName || item.liqureName || item.beverageName}
+                  </div>
+                  <div className="cart-number">{item.quantity}</div>
+                  <div className="cart-price">{_dishPrice(item)}</div>
                   <div
                     className="cart-remove"
                     type="button"
                     role="button"
-                    onClick={() => props.onRemove(dish._id)}
+                    onClick={() => props.onRemove(item._id)}
                   >
                     <i className="fa fa-trash-alt"></i>
                   </div>
@@ -468,7 +523,7 @@ export default function Modals(props) {
             <MDBBtn
               className="btn btn-success btn-sm"
               onClick={() => props.onBuy()}
-              style={{paddding:"2rem", backgroupColor:"red"}}
+              style={{ paddding: "2rem", backgroupColor: "red" }}
             >
               Buy
             </MDBBtn>
@@ -477,6 +532,122 @@ export default function Modals(props) {
               onClick={() => props.onClear()}
             >
               Clear Cart
+            </MDBBtn>
+          </MDBModalFooter>
+        </MDBModal>
+      </MDBContainer>
+    );
+  } else if (props.title === "add-liquor") {
+    return (
+      <MDBContainer>
+        <MDBModal
+          disableBackdrop
+          isOpen={props.isOpen}
+          toggle={props.toggleDish}
+          size="lg"
+        >
+          <MDBModalHeader
+            className="modal-title"
+            toggle={() => props.toggleDish("add-liquor")}
+          >
+            {props.onErr === "" ? (
+              <>ADD LIQUOR</>
+            ) : (
+              <div className="danger-mssg">{props.onErr}</div>
+            )}
+          </MDBModalHeader>
+          <MDBModalBody>
+            <form>
+              <div className="row">
+                <div className="col-6">
+                  <label>Liquor Name</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    onChange={e => setFirstName(e.target.value)}
+                  />
+                </div>
+                <div className="col-6">
+                  <label>Price</label>
+                  <input
+                    type="number"
+                    className="form-control"
+                    onChange={e => setPhone(e.target.value)}
+                  />
+                </div>
+              </div>
+            </form>
+          </MDBModalBody>
+          <MDBModalFooter>
+            <MDBBtn
+              className="btn btn-secondary btn-sm"
+              onClick={() => props.toggleDish("add-liquor")}
+            >
+              Close
+            </MDBBtn>
+            <MDBBtn
+              className="btn btn-success btn-sm"
+              onClick={() => _handleAddDish("add-liquor")}
+            >
+              Save changes
+            </MDBBtn>
+          </MDBModalFooter>
+        </MDBModal>
+      </MDBContainer>
+    );
+  } else if (props.title === "add-beverage") {
+    return (
+      <MDBContainer>
+        <MDBModal
+          disableBackdrop
+          isOpen={props.isOpen}
+          toggle={props.toggleDish}
+          size="lg"
+        >
+          <MDBModalHeader
+            className="modal-title"
+            toggle={() => props.toggleDish("add-beverage")}
+          >
+            {props.onErr === "" ? (
+              <>ADD BEVERAGE</>
+            ) : (
+              <div className="danger-mssg">{props.onErr}</div>
+            )}
+          </MDBModalHeader>
+          <MDBModalBody>
+            <form>
+              <div className="row">
+                <div className="col-6">
+                  <label>Beverage Name</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    onChange={e => setFirstName(e.target.value)}
+                  />
+                </div>
+                <div className="col-6">
+                  <label>Price</label>
+                  <input
+                    type="number"
+                    className="form-control"
+                    onChange={e => setPhone(e.target.value)}
+                  />
+                </div>
+              </div>
+            </form>
+          </MDBModalBody>
+          <MDBModalFooter>
+            <MDBBtn
+              className="btn btn-secondary btn-sm"
+              onClick={() => props.toggleDish("add-beverage")}
+            >
+              Close
+            </MDBBtn>
+            <MDBBtn
+              className="btn btn-success btn-sm"
+              onClick={() => _handleAddDish("add-beverage")}
+            >
+              Save changes
             </MDBBtn>
           </MDBModalFooter>
         </MDBModal>

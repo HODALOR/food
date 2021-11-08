@@ -3,3 +3,7 @@
 {"food":"Toast/Fried Breat","price":"4","quantity":"2","date":"11/4/2021, 11:45:15 PM","userName":"prince","_id":"UsisEtPT4KJIxKjP","createdAt":{"$$date":1636112715619},"updatedAt":{"$$date":1636112715619}}
 {"food":"Fried Rice & Drum Sticks","price":"80","quantity":"2","date":"7/7/2021, 4:51:55 PM","userName":"prince","_id":"gfd9AZXpuq8jG3bm","createdAt":{"$$date":1625676715071},"updatedAt":{"$$date":1625676715071}}
 {"food":"Pizza /meat lovers(medium)","price":"75","quantity":"1","date":"7/7/2021, 4:51:55 PM","userName":"prince","_id":"kImXPa9QpexuKrXs","createdAt":{"$$date":1625676715050},"updatedAt":{"$$date":1625676715050}}
+{"item":"Avocado salad","price":"44","quantity":"1","date":"11/8/2021, 4:45:35 PM","userName":"Kofi","_id":"Z8B1J7nREkuqD0KF","createdAt":{"$$date":1636389935217},"updatedAt":{"$$date":1636389935217}}
+{"item":"drink 1","price":"32","quantity":"2","date":"11/8/2021, 4:45:35 PM","userName":"Kofi","_id":"hjSw5VAaIYq9q3Uj","createdAt":{"$$date":1636389935232},"updatedAt":{"$$date":1636389935232}}
+{"item":"est beverage updated","price":"82","quantity":"2","date":"11/8/2021, 4:45:35 PM","userName":"Kofi","_id":"6xgfuNcpXHHFxATR","createdAt":{"$$date":1636389935240},"updatedAt":{"$$date":1636389935240}}
+{"item":"drink 1","price":"16","quantity":"1","date":"11/8/2021, 4:53:09 PM","userName":"Kofi","_id":"EjmmDkFk3FiXxxPm","createdAt":{"$$date":1636390389237},"updatedAt":{"$$date":1636390389237}}

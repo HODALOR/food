@@ -1,7 +1,7 @@
 const salesSchema = {
   type: "object",
   properties: {
-    food: {
+    item: {
       type: "string",
     },
     price: {

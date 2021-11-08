@@ -5,18 +5,22 @@ const path = require("path");
 const userStore = require("./db/stores/userStore");
 const saleStore = require("./db/stores/salesStore");
 const dishStore = require("./db/stores/dishesStore");
+const beverageStore = require("./db/stores/beverageStore");
+const liqureStore = require("./db/stores/liqureStore");
 
 global.userStore = userStore;
 global.saleStore = saleStore;
 global.dishStore = dishStore;
+global.beverageStore = beverageStore;
+global.liqureStore = liqureStore;
 
 function createWindow() {
   const win = new BrowserWindow({
     show: false,
     webPreferences: {
       nodeIntegration: true,
-      webSecurity: false,
-    },
+      webSecurity: false
+    }
   });
 
   win.maximize();
@@ -55,7 +59,7 @@ if (isDev) {
   try {
     require("electron-reloader")(module, {
       debug: true,
-      watchRenderer: true,
+      watchRenderer: true
     });
   } catch (_) {}
 }
