@@ -1,6 +1,6 @@
 {
-  "name": "foodapp",
-  "version": "0.1.0",
+  "name": "kigali",
+  "version": "0.1.1",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
@@ -22,13 +22,13 @@
   "main": "public/electron.js",
   "description": "A food ordering app",
   "author": {
-    "name": "Hodalor",
+    "name": "Hodalor and ilyaseen19",
     "email": "princehodalor@gmail.com",
     "company": "Codelab"
   },
   "build": {
     "appId": "foodapp.app",
-    "productName": "FOOD",
+    "productName": "KIGALI",
     "files": [
       "build/**/*"
     ],
@@ -59,7 +59,7 @@
       "allowToChangeInstallationDirectory": true,
       "installerIcon": "/build/logo.png",
       "uninstallerIcon": "/build/logo.png",
-      "uninstallDisplayName": "FOOD ",
+      "uninstallDisplayName": "KIGALI ",
       "createDesktopShortcut": true,
       "license": "license.text"
     }

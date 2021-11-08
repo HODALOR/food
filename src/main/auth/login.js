@@ -25,7 +25,7 @@ function Login(props) {
       }, 3000);
       return false;
     } else {
-      usersInstance.readUser(userName).then((user) => {
+      usersInstance.readUser(userName).then(user => {
         if (user === null) {
           setErr("User does not exist, please check user name or password!");
           setTimeout(() => {
@@ -56,7 +56,7 @@ function Login(props) {
       }, 3000);
       return false;
     } else {
-      usersInstance.readAdmin(password).then((admin) => {
+      usersInstance.readAdmin(password).then(admin => {
         if (admin === null) {
           setErr("Admin does not exist, check password!");
           setTimeout(() => {
@@ -116,7 +116,7 @@ function Login(props) {
                   className="input-field"
                   type="password"
                   value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                  onChange={e => setPassword(e.target.value)}
                 />
               </p>
               <p>
@@ -131,7 +131,7 @@ function Login(props) {
                     height: "3rem",
                     marginTop: "2rem",
                     border: "none",
-                    borderRadius: ".5rem",
+                    borderRadius: ".5rem"
                   }}
                 >
                   Admin Login
@@ -178,7 +178,7 @@ function Login(props) {
                   className="input-field"
                   type="text"
                   value={userName}
-                  onChange={(e) => setUserName(e.target.value)}
+                  onChange={e => setUserName(e.target.value)}
                 />
               </p>
               <p>
@@ -187,7 +187,7 @@ function Login(props) {
                   className="input-field"
                   type="password"
                   value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                  onChange={e => setPassword(e.target.value)}
                 />
               </p>
               <p>
@@ -202,7 +202,7 @@ function Login(props) {
                     height: "3rem",
                     marginTop: "2rem",
                     border: "none",
-                    borderRadius: ".5rem",
+                    borderRadius: ".5rem"
                   }}
                 >
                   Login
@@ -210,6 +210,9 @@ function Login(props) {
                 {/* <label>Email</label> */}
               </p>
             </form>
+            <span>
+              <a href="https://codelabfirm.netlify.app">Powered by Code Lab</a>
+            </span>
           </div>
         </div>
       </div>

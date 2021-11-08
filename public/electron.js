@@ -25,7 +25,7 @@ function createWindow() {
 
   win.maximize();
   win.show();
-  // win.removeMenu();
+  win.removeMenu();
 
   win.loadURL(
     isDev
