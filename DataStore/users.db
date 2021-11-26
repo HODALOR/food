@@ -1,3 +1,6 @@
 {"firstName":"Kofi","lastName":"Hodalor ","userName":"Kofi","password":"123456","role":"Employee","phone":"0000000000","_id":"VUWpJ0kJfFgACGY7","createdAt":{"$$date":1636117315046},"updatedAt":{"$$date":1636117315046}}
 {"firstName":"Prince","lastName":"Admin","userName":"prince","password":"prince1","role":"Admin","phone":"347344347854","_id":"dY7YiF1aKqOO71UF","createdAt":{"$$date":1625479914879},"updatedAt":{"$$date":1625479914879}}
 {"firstName":"Abdul","lastName":"Admin","userName":"alfuty09","password":"ilyaseen19","role":"Admin","phone":"0547661420","_id":"eKTN0SwReBob6q19","createdAt":{"$$date":1625479175099},"updatedAt":{"$$date":1625479175099}}
+{"$$deleted":true,"_id":"dY7YiF1aKqOO71UF"}
+{"firstName":"admin ","lastName":"1","userName":"admin1","password":"admin1","phone":"0000000000","role":"Admin","_id":"eKTN0SwReBob6q19","createdAt":{"$$date":1625479175099},"updatedAt":{"$$date":1637885207834}}
+{"firstName":"user","lastName":"1","userName":"user1","password":"123456","phone":"0000000000","role":"Employee","_id":"VUWpJ0kJfFgACGY7","createdAt":{"$$date":1636117315046},"updatedAt":{"$$date":1637885289498}}

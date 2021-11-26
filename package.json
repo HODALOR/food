@@ -1,6 +1,6 @@
 {
-  "name": "kigali",
-  "version": "0.1.1",
+  "name": "kegali",
+  "version": "0.1.2",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
@@ -20,25 +20,26 @@
     "web-vitals": "^0.2.4"
   },
   "main": "public/electron.js",
-  "description": "A food ordering app",
+  "description": "A food ordering app for kegali hotel",
   "author": {
-    "name": "Hodalor and ilyaseen19",
+    "name": "Codelab",
     "email": "princehodalor@gmail.com",
     "company": "Codelab"
   },
   "build": {
-    "appId": "foodapp.app",
-    "productName": "KIGALI",
+    "appId": "Kegali.app",
+    "productName": "KEGALI",
     "files": [
-      "build/**/*"
+      "build/**/*",
+      "build/kegali.*"
     ],
     "directories": {
       "buildResources": "build"
     },
     "extraResources": [
       {
-        "from": "D:/reactjs/food/poblic/assets/logo.png",
-        "to": "/build/logo.png"
+        "from": "C:/Users/ILYASEEN19/Documents/projects/food/public/kegali.png",
+        "to": "/build/kegali.png"
       },
       {
         "from": "./DataStore/",
@@ -49,19 +50,15 @@
       }
     ],
     "win": {
-      "icon": "build/logo.png",
-      "target": [
-        "7z"
-      ]
+      "icon": "/build/kegali.png",
+      "target": "NSIS"
     },
     "nsis": {
       "oneClick": false,
       "allowToChangeInstallationDirectory": true,
-      "installerIcon": "/build/logo.png",
-      "uninstallerIcon": "/build/logo.png",
-      "uninstallDisplayName": "KIGALI ",
+      "uninstallDisplayName": "KEGALI",
       "createDesktopShortcut": true,
-      "license": "license.text"
+      "license": "license.txt"
     }
   },
   "homepage": "./",

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Header from "./component/header";
 import Modals from "./component/modals";
 import Print from "./component/print";
+import back from "./dish1.jpg";
 import "./main.css";
 
 function Main(props) {
@@ -143,7 +144,7 @@ function Main(props) {
   };
   const _handleBuy = () => {
     props.onAdd(cart);
-    // setPrint(true);
+    setPrint(true);
     setCart([]);
     _toggleModal();
   };
@@ -172,7 +173,7 @@ function Main(props) {
             margin: "1%",
             height: "85vh",
             justifyContent: "center",
-            backgroundImage: `url(/assets/dish1.jpg)`,
+            backgroundImage: `url(${back})`,
             backgroundRepeat: "no-repeat",
             backgroundPosition: "center",
             backgroundSize: "cover",

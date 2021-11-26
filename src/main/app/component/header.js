@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../main.css";
+import logo from "./kegali.jpg";
 
 function Header(props) {
   if (props.title === "admin") {
@@ -8,8 +9,8 @@ function Header(props) {
       <div>
         <div className="header-style">
           <img
-            src="/assets/logo1.png"
-            style={{ width: "60px", height: "60px" }}
+            src={logo}
+            style={{ width: "50px", height: "50px", margin: "3px" }}
           />
           <div
             className="dropdown "
@@ -21,7 +22,7 @@ function Header(props) {
                 style={{
                   marginRight: "10px",
                   fontSize: "1.5rem",
-                  marginLeft: "30px",
+                  marginLeft: "30px"
                 }}
               ></i>
               <div className="dropdown-content">
@@ -48,8 +49,8 @@ function Header(props) {
       <div>
         <div className="header-style">
           <img
-            src="/assets/logo1.png"
-            style={{ width: "60px", height: "60px" }}
+            src={logo}
+            style={{ width: "50px", height: "50px", margin: "3px" }}
           />
           {/* <p style={{textAlign: "left"}}>KIGALI HOTEL</p> */}
           <Link to="/" className="right">

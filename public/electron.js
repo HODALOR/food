@@ -1,3 +1,4 @@
+const icon = "./kegali.png";
 const { app, BrowserWindow } = require("electron");
 const isDev = require("electron-is-dev");
 const path = require("path");
@@ -20,7 +21,8 @@ function createWindow() {
     webPreferences: {
       nodeIntegration: true,
       webSecurity: false
-    }
+    },
+    icon: __dirname + { icon }
   });
 
   win.maximize();

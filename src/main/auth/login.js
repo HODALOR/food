@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./login.css";
+import logo from "./kegali_white.jpg";
 
 // importing db files
 const { remote } = require("electron");
@@ -100,8 +101,8 @@ function Login(props) {
             </div>
             <div>
               <img
-                src="/assets/logo1.png"
-                style={{ width: "8rem", height: "6rem" }}
+                src={logo}
+                style={{ width: "60px", height: "60px", marginTop: "3px" }}
               />
             </div>
             {errMess === "" ? (
@@ -162,8 +163,8 @@ function Login(props) {
 
             <div>
               <img
-                src="/assets/logo1.png"
-                style={{ width: "8rem", height: "6rem" }}
+                src={logo}
+                style={{ width: "60px", height: "60px", marginTop: "3px" }}
               />
             </div>
             {errMess === "" ? (
