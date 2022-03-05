@@ -1,0 +1,40 @@
+.login-bg {
+  background-color: #414d5f;
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding-bottom: 0;
+  height: 100vh;
+  padding-top: 3rem;
+}
+
+.navbar-items {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 30px;
+}
+
+.navbar-items-active {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 30px;
+  border-bottom: solid 0.5px orange;
+  color: orange;
+  font-weight: bold;
+}
+
+.kitchen-wrapper {
+  padding: 100px 12px 0 12px;
+  height: 100vh;
+}
+
+/* html {
+  overflow: scroll;
+  overflow-x: hidden;
+} */
+
+::-webkit-scrollbar {
+  width: 0; /* Remove scrollbar space */
+  background: transparent; /* Optional: just make scrollbar invisible */
+}
