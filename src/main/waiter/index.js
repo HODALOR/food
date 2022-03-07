@@ -12,7 +12,7 @@ export default function Waiters(props) {
     socket.emit("waiters", "waiters_page");
 
     return () => {
-      socket.emit("disconnect", "waiters_page");
+      socket.emit("offline", "waiters_page");
     };
   });
 

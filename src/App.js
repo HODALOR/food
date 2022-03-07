@@ -14,12 +14,12 @@ function App() {
       <Switch>
         <WaiterContextProvider>
           <Route exact path="/" component={Waiters} />
-        </WaiterContextProvider>
 
-        <Route path="/login" render={(props) => <Login {...props} />} />
-        <Route path="/admin" render={(props) => <Admin {...props} />} />
-        <Route path="/kitchen" render={(props) => <Kitchen {...props} />} />
-        <Route path="/bar" render={(props) => <Bar {...props} />} />
+          <Route path="/login" render={(props) => <Login {...props} />} />
+          <Route path="/admin" render={(props) => <Admin {...props} />} />
+          <Route path="/kitchen" render={(props) => <Kitchen {...props} />} />
+          <Route path="/bar" render={(props) => <Bar {...props} />} />
+        </WaiterContextProvider>
       </Switch>
     </Router>
   );
