@@ -1,5 +1,6 @@
 import React, { createContext, useState } from "react";
 import { _calTprice, _calTQt } from "../functions/waiters";
+import socket from "../socket";
 
 export const WaiterContext = createContext();
 
@@ -148,7 +149,7 @@ export default function WaiterContextProvider(props) {
       });
   };
 
-  // handle add to cart
+  // handle add dish to cart
   const _addToCart = async () => {
     const { selected, vQt } = data;
 
@@ -156,6 +157,7 @@ export default function WaiterContextProvider(props) {
     if (!selected.hasOwnProperty("name")) return null;
 
     selected.qt = parseInt(vQt);
+    selected.destination = "kitchen";
     const newCart = [...cart, selected];
     const tp = await _calTprice(newCart);
     const qt = await _calTQt(newCart);
@@ -178,6 +180,7 @@ export default function WaiterContextProvider(props) {
     if (!selected.hasOwnProperty("name")) return null;
 
     selected.qt = parseInt(lqt);
+    selected.destination = "bar";
     const newCart = [...cart, selected];
     const tp = await _calTprice(newCart);
     const qt = await _calTQt(newCart);
@@ -192,7 +195,7 @@ export default function WaiterContextProvider(props) {
     setCart(newCart);
   };
 
-  // handle add liquor to cart
+  // handle add drink to cart
   const _addToDriCart = async () => {
     const { selected, dqt } = data;
 
@@ -200,6 +203,7 @@ export default function WaiterContextProvider(props) {
     if (!selected.hasOwnProperty("name")) return null;
 
     selected.qt = parseInt(dqt);
+    selected.destination = "bar";
     const newCart = [...cart, selected];
     const tp = await _calTprice(newCart);
     const qt = await _calTQt(newCart);
@@ -243,7 +247,26 @@ export default function WaiterContextProvider(props) {
     }
     if (data.code === "") return null;
 
-    // handle food order here <-----
+    // add waiter and pack type to cart
+    const newCart = {
+      items: cart,
+      packData: { packType: data.pakType, waiter: data.code },
+    };
+
+    // emit the code to the backend for further processing
+    socket.emit("order", newCart);
+
+    // clear the cart after emitting
+    setCart([]);
+    setData({
+      ...data,
+      pakType: "",
+      code: "",
+      tp: 0,
+      tqt: 0,
+      isNot: false,
+      isFalse: false,
+    });
   };
 
   return (

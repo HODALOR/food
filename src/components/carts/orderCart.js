@@ -11,6 +11,7 @@ export default function OrderCart() {
     _handleCancel,
     _handleOrder,
   } = useContext(WaiterContext);
+
   return (
     <div className="card">
       <div className="card-header">Cart Details</div>
