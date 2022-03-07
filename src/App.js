@@ -6,12 +6,16 @@ import Admin from "./main/admin/index";
 import Kitchen from "./main/kitchen/index";
 import Waiters from "./main/waiter/index";
 import Bar from "./main/bar/index";
+import WaiterContextProvider from "./libs/contexts/waitersContext";
 
 function App() {
   return (
     <Router>
       <Switch>
-        <Route exact path="/" render={(props) => <Waiters {...props} />} />
+        <WaiterContextProvider>
+          <Route exact path="/" component={Waiters} />
+        </WaiterContextProvider>
+
         <Route path="/login" render={(props) => <Login {...props} />} />
         <Route path="/admin" render={(props) => <Admin {...props} />} />
         <Route path="/kitchen" render={(props) => <Kitchen {...props} />} />
