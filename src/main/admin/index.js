@@ -1,43 +1,34 @@
 import "../../css/main.css";
-import { useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import PageTitle from "./../../components/pageTitle";
 import Content from "../../components/contents";
 import { salesData, menuData } from "../../libs/data/tableConfig";
 import logout from "../../libs/functions/logout";
 import { useHistory } from "react-router-dom";
-import validateUser from "../../libs/functions/validateUser";
+import { WaiterContext } from "../../libs/contexts/waitersContext";
+import { _checkUserAuth } from "../../libs/functions/login";
 
-export default function Admin(props) {
-  // create data state
+export default function Admin() {
+  // recieve context data
+  const {authData, _logout} = useContext(WaiterContext)
+
   const [data, setData] = useState({
     title: "dashboard",
+    isLogged: false
   });
-
-  useEffect(() => {
-    validateRoute();
-  });
-
-  // validate routing
-  const validateRoute = async () => {
-    const res = await validateUser();
-    if (!res) history.push("/login");
-  };
 
   // history hook
   const history = useHistory();
 
+  // checking if user is authenticated
+  if (!_checkUserAuth) history.push("/login");
+
   // change title based on click
   const _changeTitle = (ttl) => {
-    setData({
-      ...data,
-      title: ttl,
-    });
-  };
-
-  // handle logout
-  const _handleLogout = async () => {
-    const res = await logout();
-    if (res) history.push("/login");
+    // setData({
+    //   ...data,
+    //   title: ttl,
+    // });
   };
 
   return (
@@ -76,7 +67,7 @@ export default function Admin(props) {
                   className="nav-link right-bar-toggle"
                   type="button"
                   role="button"
-                  onClick={_handleLogout}
+                  onClick={_logout}
                 >
                   <i className="fa fa-unlock" />
                 </span>

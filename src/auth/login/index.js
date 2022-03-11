@@ -1,30 +1,16 @@
+import { useContext } from "react";
 import "../../css/main.css";
 import background from "../../components/img/bg0.jpg";
-import login from "../../libs/functions/_handleLogin";
-import { useHistory } from "react-router-dom";
-import { useState } from "react";
+import { WaiterContext } from "../../libs/contexts/waitersContext";
 
-export default function Login(props) {
-  // state hooks
-  const [data, setData] = useState({
-    email: "",
-    password: "",
-    terminal: "",
-  });
-
-  // history hook
-  const history = useHistory();
-
-  // handle login function
-  const _handleLogin = async () => {
-    const val = await login();
-    if (val) {
-      if (data.terminal === "ADMINISTRATOR") return history.push("/admin");
-      if (data.terminal === "KITCHEN") return history.push("/kitchen");
-      if (data.terminal === "BAR") return history.push("/bar");
-      // if (data.terminal === "WAITER") return history.push("food-order");
-    }
-  };
+export default function Login() {
+  const {
+    authData,
+    _emailInPut,
+    _passwordInput,
+    _terminalInput,
+    _handleLogin,
+  } = useContext(WaiterContext);
 
   return (
     <div className="login-bg" style={{ backgroundImage: `url(${background})` }}>
@@ -33,6 +19,16 @@ export default function Login(props) {
           <div className="row justify-content-center">
             <div className="col-lg-5">
               <div className="card">
+                <span
+                  style={{
+                    color: "orangered",
+                    fontSize: "12px",
+                    marginTop: "3px",
+                    textAlign: "center",
+                  }}
+                >
+                  {authData.authErrMsg}
+                </span>
                 <div className="card-body p-4">
                   <div className="text-center w-75 m-auto">
                     <span>
@@ -61,16 +57,10 @@ export default function Login(props) {
                       <label htmlFor="emailaddress">Email address</label>
                       <input
                         className="form-control"
+                        value={authData.email}
                         type="email"
-                        id="emailaddress"
-                        required
                         placeholder="Enter your email"
-                        onChange={(e) =>
-                          setData({
-                            ...data,
-                            email: e.target.value.toUpperCase(),
-                          })
-                        }
+                        onChange={(e) => _emailInPut(e.target.value)}
                       />
                     </div>
                     <div className="form-group mb-3">
@@ -79,11 +69,10 @@ export default function Login(props) {
                         className="form-control"
                         type="password"
                         required
+                        value={authData.password}
                         id="password"
                         placeholder="Enter your password"
-                        onChange={(e) =>
-                          setData({ ...data, password: e.target.value })
-                        }
+                        onChange={(e) => _passwordInput(e.target.value)}
                       />
                     </div>
                     <div className="form-group mb-3">
@@ -92,22 +81,19 @@ export default function Login(props) {
                         className="form-control"
                         type="select"
                         required
-                        onChange={(e) =>
-                          setData({ ...data, terminal: e.target.value })
-                        }
+                        onChange={(e) => _terminalInput(e.target.value)}
                       >
                         <option value="">Select a Terminal</option>
                         <option value="ADMINISTRATOR">ADMINISTRATION</option>
                         <option value="KITCHEN">KITCHEN</option>
                         <option value="BAR">BAR</option>
-                        {/* <option value="WAITER">WAITER</option> */}
                       </select>
                     </div>
                     <div className="form-group mb-0 text-center">
                       <button
                         className="btn btn-primary btn-block"
                         type="button"
-                        onClick={_handleLogin}
+                        onClick={() => _handleLogin()}
                       >
                         {" "}
                         Log In{" "}

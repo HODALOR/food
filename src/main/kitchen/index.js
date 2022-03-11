@@ -1,34 +1,19 @@
 import "../../css/main.css";
-import { useEffect, useState } from "react";
-import logout from "../../libs/functions/logout";
+import { useContext } from "react";
 import { useHistory } from "react-router-dom";
-import validateUser from "../../libs/functions/validateUser";
 import background from "../../components/img/bg1.jpg";
+import { _checkUserAuth } from "../../libs/functions/login";
+import { WaiterContext } from "../../libs/contexts/waitersContext";
 
-export default function Kitchen(props) {
-  // create data state
-  const [data, setData] = useState({
-    title: "dashboard",
-  });
+export default function Kitchen() {
+  // receive context data
+  const { data, _logout } = useContext(WaiterContext);
 
-  useEffect(() => {
-    validateRoute();
-  });
-
-  // validate routing
-  const validateRoute = async () => {
-    const res = await validateUser();
-    if (!res) history.push("/login");
-  };
-
-  // history hook
+  //getting history prop
   const history = useHistory();
 
-  // handle logout
-  const _handleLogout = async () => {
-    const res = await logout();
-    if (res) history.push("/login");
-  };
+  // check if user is authorized
+  if (!_checkUserAuth) return history.push("/login");
 
   return (
     <>
@@ -66,7 +51,7 @@ export default function Kitchen(props) {
                   className="nav-link right-bar-toggle"
                   type="button"
                   role="button"
-                  onClick={_handleLogout}
+                  onClick={_logout}
                 >
                   <i className="fa fa-unlock" />
                 </span>

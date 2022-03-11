@@ -1,4 +1,7 @@
 import React, { createContext, useState } from "react";
+import { useHistory } from "react-router-dom";
+import { login } from "../functions/login";
+import logout from "../functions/logout";
 import { _calTprice, _calTQt } from "../functions/waiters";
 import socket from "../socket";
 
@@ -41,6 +44,14 @@ export default function WaiterContextProvider(props) {
     code: "",
     isFalse: false,
   });
+  const [authData, setAuthData] = useState({
+    email: "",
+    password: "",
+    terminal: "",
+    authErrMsg: "",
+  });
+
+  const history = useHistory();
 
   const _handleSlectPackage = (value) => {
     setData({
@@ -269,6 +280,69 @@ export default function WaiterContextProvider(props) {
     });
   };
 
+  //****  start auth functions **** //
+
+  // handle email
+  const _emailInPut = (value) => {
+    setAuthData({
+      ...authData,
+      email: value,
+    });
+  };
+
+  // handle paasowrd
+  const _passwordInput = (value) => {
+    setAuthData({
+      ...authData,
+      password: value,
+    });
+  };
+
+  // handle terminal select
+  const _terminalInput = (value) => {
+    setAuthData({
+      ...authData,
+      terminal: value,
+    });
+  };
+
+  // handle login
+  const _handleLogin = async () => {
+    const res = await login(authData);
+
+    if (res) {
+      setAuthData({
+        ...authData,
+        authErrMsg: "",
+        email: "",
+        password: "",
+        terminal: "",
+      });
+      if (authData.terminal === "ADMINISTRATOR") return history.push("/admin");
+      if (authData.terminal === "KITCHEN") return history.push("/kitchen");
+      if (authData.terminal === "BAR") return history.push("/bar");
+    } else {
+      setAuthData({
+        ...authData,
+        authErrMsg: "Please check data provided and try again!",
+      });
+
+      setTimeout(() => {
+        setAuthData({
+          ...authData,
+          authErrMsg: "",
+        });
+      }, 3000);
+    }
+  };
+  // end login functions
+
+  // **** start log out handler *** ///
+  const _logout = async () => {
+    const res = await logout();
+    if (res) return history.push("/login");
+  };
+
   return (
     <WaiterContext.Provider
       value={{
@@ -277,6 +351,9 @@ export default function WaiterContextProvider(props) {
         drinks,
         cart,
         data,
+        // auth data
+        authData,
+        // end auth data
         _handleRemove,
         _handleSelect,
         _handleSelectQt,
@@ -291,6 +368,15 @@ export default function WaiterContextProvider(props) {
         _handleCode,
         _handleCancel,
         _handleOrder,
+        // auth functions
+        _emailInPut,
+        _passwordInput,
+        _terminalInput,
+        _handleLogin,
+        // end auth functions
+        // log out handler
+        _logout,
+        // end log out handler
       }}
     >
       {props.children}
